@@ -11,27 +11,34 @@ using Microsoft.Extensions.DependencyInjection;
 using maciejcaputablog.Data;
 using maciejcaputablog.Models;
 using maciejcaputablog.Services;
+using Microsoft.AspNetCore.Rewrite;
 
 namespace maciejcaputablog
 {
     public class Startup
     {
+        private readonly IConfiguration _configuration;
+
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
+                options.UseSqlServer(_configuration.GetConnectionString("Blog")));
+ 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
+            
+            services.AddAuthentication().AddGoogle(options =>
+            {
+                options.ClientId = _configuration["GoogleApi:ClientId"];
+                options.ClientSecret = _configuration["GoogleApi:ClientSecret"];
+            });
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
@@ -54,6 +61,7 @@ namespace maciejcaputablog
             }
 
             app.UseStaticFiles();
+            app.UseRewriter(new RewriteOptions().AddRedirectToHttpsPermanent());
 
             app.UseAuthentication();
 
