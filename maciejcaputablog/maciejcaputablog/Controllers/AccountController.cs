@@ -11,8 +11,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using maciejcaputablog.Models;
-using maciejcaputablog.Models.AccountViewModels;
-using maciejcaputablog.Services;
 
 namespace maciejcaputablog.Controllers
 {
@@ -84,8 +82,7 @@ namespace maciejcaputablog.Controllers
             var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false, bypassTwoFactor: true);
             if (result.Succeeded)
             {
-                _logger.LogInformation("User logged in with {Name} provider.", info.LoginProvider);
-                return RedirectToLocal(returnUrl);
+                return RedirectToAction("Index", "TemporaryAdminPanel");
             }
             else
             {

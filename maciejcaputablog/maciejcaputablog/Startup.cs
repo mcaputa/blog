@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -9,7 +10,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using maciejcaputablog.Data;
+using maciejcaputablog.Entity;
 using maciejcaputablog.Models;
+using maciejcaputablog.Repositories;
 using maciejcaputablog.Services;
 using Microsoft.AspNetCore.Rewrite;
 
@@ -33,7 +36,10 @@ namespace maciejcaputablog
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-            
+
+            services.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
+
+
             services.AddAuthentication().AddGoogle(options =>
             {
                 options.ClientId = _configuration["GoogleApi:ClientId"];
@@ -41,8 +47,13 @@ namespace maciejcaputablog
             });
 
             // Add application services.
-            services.AddTransient<IEmailSender, EmailSender>();
+            services.AddScoped<IFaqRepository, FaqRepository>();
+            services.AddScoped<IPostRepository, PostRepository>();
 
+            services.AddScoped<IFaqService, FaqService>();
+            services.AddScoped<IPostService, PostService>();
+
+            services.AddAutoMapper();
             services.AddMvc();
         }
 
@@ -60,7 +71,7 @@ namespace maciejcaputablog
             //{
             //    app.UseExceptionHandler("/Home/Error");
             //}
-
+            app.UseNodeModule(env.ContentRootPath);
             app.UseStaticFiles();
             app.UseRewriter(new RewriteOptions().AddRedirectToHttpsPermanent());
 

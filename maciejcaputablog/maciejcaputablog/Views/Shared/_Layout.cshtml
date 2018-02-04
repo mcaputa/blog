@@ -4,11 +4,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Maciej Caputa - z programowaniem w tle</title>
-</head>
-<body>
+    <link href="~/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/node_modules/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+</head> 
+    @Html.Partial("_Navbar")
+<body class="container">
     <div class="container body-content">
         @RenderBody()
     </div>
+<script src="~/node_modules/jquery/dist/jquery.js"></script>
+<script src="~/node_modules/bootstrap/dist/js/bootstrap.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

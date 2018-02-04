@@ -1,6 +1,4 @@
-using System;
-
-namespace maciejcaputablog.Models
+namespace maciejcaputablog.ViewModels
 {
     public class ErrorViewModel
     {

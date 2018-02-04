@@ -1,13 +1,10 @@
 ﻿@using System.Collections.Generic
 @using System.Linq
+@using maciejcaputablog.ViewModels
 @using Microsoft.AspNetCore.Http
 @using Microsoft.AspNetCore.Http.Authentication
-@model LoginViewModel
+@model maciejcaputablog.ViewModels.LoginViewModel
 @inject SignInManager<ApplicationUser> SignInManager
-
-@{
-    ViewData["Title"] = "Log in";
-}
 
 <h2>@ViewData["Title"]</h2>
 <div class="row">
@@ -22,4 +19,14 @@
                         </div>
                     </form>
             }
+    @if (User.Identity.IsAuthenticated)
+    {
+        <form asp-action="Logout" method="post" class="form-horizontal">
+            <div>
+                <p>
+                    <button type="submit" class="btn btn-default" >Wyloguj</button>
+                </p>
+            </div>
+        </form>
+    }
 </div>

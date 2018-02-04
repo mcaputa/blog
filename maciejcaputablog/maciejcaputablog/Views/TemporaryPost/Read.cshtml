@@ -1,0 +1,26 @@
+﻿@model maciejcaputablog.DomainModels.PostDomainModel
+
+<div class="row">
+    <div class="col-lg-8">
+
+        <h1 class="mt-4">@Model.Title</h1>
+
+        <p class="lead">
+            by
+            MaciejCaputa
+        </p>
+
+        <hr>
+
+        
+        <p>Opublikowane dnia @Model.CreatedOn</p>
+
+        <hr>
+
+        <!-- Post Content -->
+        <p>@Model.Description</p>
+
+    </div>
+
+</div>
+

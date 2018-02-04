@@ -1,1 +1,13 @@
-﻿
+﻿@model maciejcaputablog.ViewModels.PostViewModel
+
+<h3 class="mx-auto w-50 mt-4">Posty</h3>
+
+<div class="mx-auto w-50 mt-4">
+    @foreach (var post in Model.PostDomainModels)
+    {
+        <div>
+            <a asp-action="Read" asp-controller="TemporaryPost" asp-route-postId="@post.Id">@post.Title</a> <span class="pull-right"> @post.CreatedOn</span>
+        </div>
+
+    }
+</div>
