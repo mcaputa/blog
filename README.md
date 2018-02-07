@@ -4,7 +4,7 @@ Udostępniam repozytorium, byś mógł zobaczyć w jaki sposób programuję i na
 Wszystkie swoje pomysły, sukcesy, wpadki, refaktory i inne zmiany będę opisywał i wprowadzał 
 w każdą niedzielę w okolicach 21:00. 
 
-Pewnie zastanawiasz się czy ten, kod, który teraz widzisz, to juz jest coś co powinieneś widzieć.
+Pewnie zastanawiasz się czy ten, kod, który teraz widzisz, to juz jest ostateczna wersja, którą powinieneś widzieć.
 .
 .
 .
