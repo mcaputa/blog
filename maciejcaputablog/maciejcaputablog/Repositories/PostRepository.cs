@@ -25,7 +25,7 @@ namespace maciejcaputablog.Repositories
                 Title = post.Title,
                 CreatedOn = post.CreatedOn.ToShortDateString(),
                 Id = post.Id
-            }).ToList();
+            }).OrderByDescending(post => post.CreatedOn).ToList();
 
             return allPosts;
         }
@@ -36,6 +36,7 @@ namespace maciejcaputablog.Repositories
                 .Where(post => post.Id == postId)
                 .Select(post => new PostDomainModel()
                 {
+                    Id = post.Id,
                     Description = post.Description,
                     Title = post.Title,
                     CreatedOn = post.CreatedOn.ToShortDateString()

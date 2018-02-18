@@ -20,11 +20,16 @@ namespace maciejcaputablog.Controllers
         }
         public IActionResult Index()
         {
-            //var postViewModel = _postService.GetAllPosts();
-            return View();
+            var postViewModel = _postService.GetAllPosts();
+            return View(postViewModel);
         }
 
         public IActionResult Contact()
+        {
+            return View();
+        }
+
+        public IActionResult WhyIsSoEmptyHere()
         {
             return View();
         }

@@ -66,12 +66,10 @@ namespace maciejcaputablog
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
             }
-            //else
-            //{
-            //    app.UseExceptionHandler("/Home/Error");
-            //}
-            app.UseDeveloperExceptionPage();
-            app.UseNodeModule(env.ContentRootPath);
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+            }
             app.UseStaticFiles();
             app.UseRewriter(new RewriteOptions().AddRedirectToHttpsPermanent());
 

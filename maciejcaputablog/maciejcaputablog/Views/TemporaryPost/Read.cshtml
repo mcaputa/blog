@@ -1,26 +1,33 @@
 ﻿@model maciejcaputablog.DomainModels.PostDomainModel
-
 <div class="row">
     <div class="col-lg-8">
-
         <h1 class="mt-4">@Model.Title</h1>
-
         <p class="lead">
             by
             MaciejCaputa
         </p>
-
         <hr>
-
-        
         <p>Opublikowane dnia @Model.CreatedOn</p>
-
         <hr>
-
         <!-- Post Content -->
-        <p>@Model.Description</p>
-
-    </div>
-
+        @Html.Raw(Model.Description)
+        <div id="disqus_thread"></div>
+    </div> 
 </div>
+
+<script>
+
+var disqus_config = function () {
+this.page.url = 'https://maciejcaputa.pl/';
+this.page.identifier = @Model.Id;
+};
+    (function() { 
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-maciejcaputa-pl.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
 
