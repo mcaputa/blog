@@ -345,4 +345,8 @@
     <None Include="wwwroot\node_modules\jquery\src\wrap.js" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ApplicationCore\ApplicationCore.csproj" />
+  </ItemGroup>
+
 </Project>
