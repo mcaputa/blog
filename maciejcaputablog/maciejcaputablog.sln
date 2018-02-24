@@ -5,9 +5,11 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "maciejcaputablog\Web.csproj", "{3500E218-37DC-4F1A-9C11-D151BFCB734A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationCore", "ApplicationCore\ApplicationCore.csproj", "{33BA9BDA-7B6A-4A88-973C-D61F89D666C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "ApplicationCore\Core.csproj", "{33BA9BDA-7B6A-4A88-973C-D61F89D666C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{CB7CE896-8C32-47BF-B94C-B0696D70297D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{CB7CE896-8C32-47BF-B94C-B0696D70297D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainServices", "DomainServices\DomainServices.csproj", "{8B87171A-571C-48AC-A941-2C715D2D0380}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{CB7CE896-8C32-47BF-B94C-B0696D70297D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB7CE896-8C32-47BF-B94C-B0696D70297D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB7CE896-8C32-47BF-B94C-B0696D70297D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B87171A-571C-48AC-A941-2C715D2D0380}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B87171A-571C-48AC-A941-2C715D2D0380}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B87171A-571C-48AC-A941-2C715D2D0380}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B87171A-571C-48AC-A941-2C715D2D0380}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

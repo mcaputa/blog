@@ -1,18 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using ApplicationCore.Models.StorageModels;
 using AutoMapper;
-using maciejcaputablog.DomainModels;
 using maciejcaputablog.InputModels;
 
-namespace maciejcaputablog.Profiles
+namespace Web.Profiles
 {
     public class PostProfile : Profile
     {
         public PostProfile()
         {
-            CreateMap<PostInputModel, PostDomainModel>();
+            CreateMap<PostInputModel, PostStorageModel>()
+                .ForMember(dest => dest.CreatedOn, map => map.MapFrom(src => DateTime.Now));
         }
     }
 }

@@ -1,22 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using ApplicationCore.Entities;
+using ApplicationCore.Interfaces.Repositories;
+using ApplicationCore.Interfaces.Services;
 using AutoMapper;
+using DomainServices.Services;
+using Infrastructure.Data;
+using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Rewrite;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using maciejcaputablog.Data;
-using maciejcaputablog.Entity;
-using maciejcaputablog.Models;
-using maciejcaputablog.Repositories;
-using maciejcaputablog.Services;
-using Microsoft.AspNetCore.Rewrite;
+using StructureMap;
 
-namespace maciejcaputablog
+namespace Web
 {
     public class Startup
     {
@@ -28,7 +27,7 @@ namespace maciejcaputablog
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(_configuration.GetConnectionString("Blog")));
@@ -46,15 +45,31 @@ namespace maciejcaputablog
                 options.ClientSecret = _configuration["GoogleApi:ClientSecret"];
             });
 
-            // Add application services.
-            services.AddScoped<IFaqRepository, FaqRepository>();
-            services.AddScoped<IPostRepository, PostRepository>();
-
-            services.AddScoped<IFaqService, FaqService>();
-            services.AddScoped<IPostService, PostService>();
-
             services.AddAutoMapper();
             services.AddMvc();
+
+            return ConfigureIoC(services);
+        }
+
+        private IServiceProvider ConfigureIoC(IServiceCollection services)
+        {
+            var container = new Container();
+
+            container.Configure(config =>
+            {
+                config.Scan(scan =>
+                {
+                    scan.AssemblyContainingType(typeof(Startup));
+                    scan.AssemblyContainingType(typeof(PostService));
+                    scan.AssemblyContainingType(typeof(Post)); 
+                    scan.Assembly("Infrastructure"); 
+                    scan.WithDefaultConventions();
+                });
+                //Populate the container using the service collection
+                config.Populate(services);
+            });
+
+            return container.GetInstance<IServiceProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

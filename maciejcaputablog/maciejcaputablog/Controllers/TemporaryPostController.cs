@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using ApplicationCore.Interfaces.Services;
+using ApplicationCore.Models.DomainModels;
+using ApplicationCore.Models.StorageModels;
 using AutoMapper;
-using maciejcaputablog.DomainModels;
 using maciejcaputablog.InputModels;
-using maciejcaputablog.Services;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Web.ViewModels;
 
-namespace maciejcaputablog.Controllers
+namespace Web.Controllers
 {
     [Authorize]
     public class TemporaryPostController : Controller
@@ -35,7 +32,10 @@ namespace maciejcaputablog.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(PostInputModel model)
         {
-            var postDomainModel = _mapper.Map<PostInputModel, PostDomainModel>(model);
+            var postDomainModel = new PostDomainModel()
+            {
+                PostStorageModel = _mapper.Map<PostInputModel, PostStorageModel>(model)
+            };
             _postService.CreatePost(postDomainModel);
                 
             return RedirectToAction("Index", "Home");
@@ -45,7 +45,13 @@ namespace maciejcaputablog.Controllers
         [AllowAnonymous]
         public ActionResult Read(int postId)
         {
-            var postViewModel = _postService.GetPost(postId);
+            var post = _postService.GetPost(postId);
+
+            var postViewModel = new PostViewModel()
+            {
+                PostDomainModel = post
+            };
+
             return View(postViewModel);
         }
 

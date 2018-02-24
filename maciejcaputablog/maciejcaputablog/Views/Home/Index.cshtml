@@ -1,11 +1,11 @@
-﻿@model maciejcaputablog.ViewModels.PostViewModel
+﻿@model Web.ViewModels.MainPageViewModel
 
 <h3 class="mx-auto w-50 mt-4">Posty</h3>
 
 <div class="mx-auto w-50 mt-4">
-    @for (var index = 0; index < Model.PostDomainModels.Count; index++)
+    @for (var index = 0; index < Model.PostStorageModels.Count; index++)
     {
-        var post = Model.PostDomainModels[index];
+        var post = Model.PostStorageModels[index];
         <div>
             <a asp-action="Read" asp-controller="TemporaryPost" asp-route-postId="@post.Id">@post.Title</a> <span class="pull-right"> @post.CreatedOn</span>
         </div>

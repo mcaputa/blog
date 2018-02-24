@@ -1,16 +1,16 @@
-﻿@model maciejcaputablog.DomainModels.PostDomainModel
+﻿@model Web.ViewModels.PostViewModel
 <div class="row">
     <div class="col-lg-8">
-        <h1 class="mt-4">@Model.Title</h1>
+        <h1 class="mt-4">@Model.PostDomainModel.PostStorageModel.Title</h1>
         <p class="lead">
             by
             MaciejCaputa
         </p>
         <hr>
-        <p>Opublikowane dnia @Model.CreatedOn</p>
+        <p>Opublikowane dnia @Model.PostDomainModel.PostStorageModel.CreatedOn</p>
         <hr>
         <!-- Post Content -->
-        @Html.Raw(Model.Description)
+        @Html.Raw(Model.PostDomainModel.PostStorageModel.Description)
         <div id="disqus_thread"></div>
     </div> 
 </div>
@@ -18,8 +18,8 @@
 <script>
 
 var disqus_config = function () {
-    this.page.url = 'https://maciejcaputa.pl/TemporaryPost/Read?postId=@Model.Id';
-    this.page.identifier = @Model.Id;
+    this.page.url = 'https://maciejcaputa.pl/TemporaryPost/Read?postId=@Model.PostDomainModel.PostStorageModel.Id';
+    this.page.identifier = @Model.PostDomainModel.PostStorageModel.Id;
 };
     (function() { 
         var d = document, s = d.createElement('script');

@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using maciejcaputablog.DomainModels;
+﻿using ApplicationCore.Models.DomainModels;
+using ApplicationCore.Models.StorageModels;
 
-namespace maciejcaputablog.ViewModels
+namespace Web.ViewModels
 {
     public class PostViewModel
     {
-        public List<PostDomainModel> PostDomainModels { get; set; }
+        public PostDomainModel PostDomainModel { get; set; }
     }
 }

@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using maciejcaputablog.Models;
-using maciejcaputablog.Services;
+﻿using System.Diagnostics;
+using ApplicationCore.Interfaces.Services;
 using maciejcaputablog.ViewModels;
+using Microsoft.AspNetCore.Mvc;
+using Web.ViewModels;
 
-namespace maciejcaputablog.Controllers
+namespace Web.Controllers
 {
     public class HomeController : Controller
     {
@@ -20,8 +16,14 @@ namespace maciejcaputablog.Controllers
         }
         public IActionResult Index()
         {
-            var postViewModel = _postService.GetAllPosts();
-            return View(postViewModel);
+            var postDomainModel= _postService.GetAllPosts();
+
+            var mainPageViewModel = new MainPageViewModel()
+            {
+                PostStorageModels =  postDomainModel.PostStorageModels
+            };
+
+            return View(mainPageViewModel);
         }
 
         public IActionResult Contact()
