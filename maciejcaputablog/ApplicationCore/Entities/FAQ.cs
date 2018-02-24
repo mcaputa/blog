@@ -1,13 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace ApplicationCore.Entities
+namespace Core.Entities
 {
-    public class Faq
+    public class Faq : EntityBase
     {
-        [Key]
-        public int Id { get; set; }
-
         public string Title { get; set; }
 
         public string Description { get; set; }

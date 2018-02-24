@@ -1,6 +1,7 @@
 ﻿using ApplicationCore.Interfaces.Repositories;
 using ApplicationCore.Interfaces.Services;
 using ApplicationCore.Models.DomainModels;
+using Core.Interfaces.Repositories;
 
 namespace DomainServices.Services
 {

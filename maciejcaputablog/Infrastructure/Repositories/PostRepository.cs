@@ -1,48 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ApplicationCore.Entities;
-using ApplicationCore.Interfaces.Repositories;
 using ApplicationCore.Models.StorageModels;
-using Infrastructure.Data;
+using Core.Entities;
+using Core.Interfaces.Repositories;
 
 namespace Infrastructure.Repositories
 {
-    public class PostRepository : IPostRepository
+    public class PostRepository :  IPostRepository
     {
-        private readonly IApplicationDbContext _context;
+        private readonly IRepository<Post> _postRepository;
 
-        public PostRepository(IApplicationDbContext context)
+        public PostRepository(IRepository<Post> postRepository)
         {
-            _context = context;
+            _postRepository = postRepository;
         }
 
         public List<PostStorageModel> GetAllPosts()
         {
-            var allPosts = _context.Posts.Select(post => new PostStorageModel()
+            var allPosts = _postRepository.GetList().Select(post => new PostStorageModel()
             {
                 Description = post.Description,
                 Title = post.Title,
                 CreatedOn = post.CreatedOn.ToShortDateString(),
                 Id = post.Id
-            }).OrderByDescending(post => post.CreatedOn).ToList();
+            })
+            .OrderByDescending(post => post.CreatedOn)
+            .ToList();
 
             return allPosts;
         }
 
         public PostStorageModel GetPost(int postId)
         {
-            var postDomainModel = _context.Posts
-                .Where(post => post.Id == postId)
-                .Select(post => new PostStorageModel()
-                {
-                    Id = post.Id,
-                    Description = post.Description,
-                    Title = post.Title,
-                    CreatedOn = post.CreatedOn.ToShortDateString()
-                }).Single();
+            var post = _postRepository.ReadById(postId);
+            var postStorageModel = new PostStorageModel()
+            {
+                Id = post.Id,
+                Description = post.Description,
+                Title = post.Title,
+                CreatedOn = post.CreatedOn.ToShortDateString()
+            };
 
-            return postDomainModel;
+            return postStorageModel;
         }
 
         public void CreatePost(PostStorageModel postDomainModel)
@@ -55,8 +55,7 @@ namespace Infrastructure.Repositories
                 ModifiedOn = DateTime.Today
             };
 
-            _context.Posts.Add(post);
-            _context.SaveChanges();
+            _postRepository.Create(post);
         }
     }
 }

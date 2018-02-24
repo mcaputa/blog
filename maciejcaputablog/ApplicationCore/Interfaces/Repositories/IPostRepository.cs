@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using ApplicationCore.Models.StorageModels;
 
-namespace ApplicationCore.Interfaces.Repositories
+namespace Core.Interfaces.Repositories
 {
     public interface IPostRepository
     {

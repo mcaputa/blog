@@ -1,8 +1,7 @@
 ﻿using System;
-using ApplicationCore.Entities;
-using ApplicationCore.Interfaces.Repositories;
-using ApplicationCore.Interfaces.Services;
 using AutoMapper;
+using Core.Entities;
+using Core.Interfaces.Repositories;
 using DomainServices.Services;
 using Infrastructure.Data;
 using Infrastructure.Repositories;
@@ -31,13 +30,10 @@ namespace Web
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(_configuration.GetConnectionString("Blog")));
- 
+
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-
-            services.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
-
 
             services.AddAuthentication().AddGoogle(options =>
             {
@@ -65,7 +61,9 @@ namespace Web
                     scan.Assembly("Infrastructure"); 
                     scan.WithDefaultConventions();
                 });
-                //Populate the container using the service collection
+
+                config.For(typeof(IRepository<>)).Add(typeof(Repository<>));
+                
                 config.Populate(services);
             });
 

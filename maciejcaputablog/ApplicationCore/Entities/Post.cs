@@ -1,13 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace ApplicationCore.Entities
+namespace Core.Entities
 {
-    public class Post
+    public class Post : EntityBase
     {
-        [Key]
-        public int Id { get; set; }
-
         public string Title { get; set; }
 
         public DateTime CreatedOn { get; set; }
