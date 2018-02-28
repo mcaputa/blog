@@ -8,15 +8,16 @@ namespace Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IPostService _postService;
+        private readonly IPostService postService;
 
         public HomeController(IPostService postService)
         {
-            _postService = postService;
+            this.postService = postService;
         }
+
         public IActionResult Index()
         {
-            var postDomainModel= _postService.GetAllPosts();
+            var postDomainModel= this.postService.GetAllPosts();
 
             var mainPageViewModel = new MainPageViewModel()
             {

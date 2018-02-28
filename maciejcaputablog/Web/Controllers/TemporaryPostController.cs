@@ -2,23 +2,25 @@
 using ApplicationCore.Models.DomainModels;
 using ApplicationCore.Models.StorageModels;
 using AutoMapper;
-using maciejcaputablog.InputModels;
+
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Web.ViewModels;
 
 namespace Web.Controllers
 {
+    using Web.InputModels;
+
     [Authorize]
     public class TemporaryPostController : Controller
     {
-        private readonly IMapper _mapper;
-        private readonly IPostService _postService;
+        private readonly IMapper mapper;
+        private readonly IPostService postService;
 
         public TemporaryPostController(IMapper mapper, IPostService postService)
         {
-            _mapper = mapper;
-            _postService = postService;
+            this.mapper = mapper;
+            this.postService = postService;
         }
 
         [HttpGet]
@@ -34,9 +36,9 @@ namespace Web.Controllers
         {
             var postDomainModel = new PostDomainModel()
             {
-                PostStorageModel = _mapper.Map<PostInputModel, PostStorageModel>(model)
+                PostStorageModel = this.mapper.Map<PostInputModel, PostStorageModel>(model)
             };
-            _postService.CreatePost(postDomainModel);
+            this.postService.CreatePost(postDomainModel);
                 
             return RedirectToAction("Index", "Home");
         }
@@ -45,7 +47,7 @@ namespace Web.Controllers
         [AllowAnonymous]
         public ActionResult Read(int postId)
         {
-            var post = _postService.GetPost(postId);
+            var post = this.postService.GetPost(postId);
 
             var postViewModel = new PostViewModel()
             {

@@ -1,5 +1,4 @@
-﻿using ApplicationCore.Interfaces.Repositories;
-using ApplicationCore.Interfaces.Services;
+﻿using ApplicationCore.Interfaces.Services;
 using ApplicationCore.Models.DomainModels;
 using Core.Interfaces.Repositories;
 
@@ -7,16 +6,16 @@ namespace DomainServices.Services
 {
     public class PostService : IPostService
     {
-        private readonly IPostRepository _postRepository;
+        private readonly IPostRepository postRepository;
 
         public PostService(IPostRepository postRepository)
         {
-            _postRepository = postRepository;
+            this.postRepository = postRepository;
         }
 
         public AllPostsDomainModel GetAllPosts()
         {
-            var allPostsDomainModels = _postRepository.GetAllPosts();
+            var allPostsDomainModels = this.postRepository.GetAllPosts();
 
             var postsViewModel = new AllPostsDomainModel()
             {
@@ -27,7 +26,7 @@ namespace DomainServices.Services
 
         public PostDomainModel GetPost(int postId)
         {
-            var post = this._postRepository.GetPost(postId);
+            var post = this.postRepository.GetPost(postId);
 
             var postDomainModel = new PostDomainModel()
             {
@@ -39,7 +38,7 @@ namespace DomainServices.Services
 
         public void CreatePost(PostDomainModel postDomainModel)
         {
-            _postRepository.CreatePost(postDomainModel.PostStorageModel);
+            this.postRepository.CreatePost(postDomainModel.PostStorageModel);
         }
     }
 }

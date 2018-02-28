@@ -1,5 +1,4 @@
 ﻿using ApplicationCore.Models.DomainModels;
-using ApplicationCore.Models.StorageModels;
 
 namespace Web.ViewModels
 {

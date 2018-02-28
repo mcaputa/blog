@@ -10,7 +10,9 @@ namespace Core.Interfaces.Repositories
         DbSet<Faq> Faqs { get; set; }
 
         DbSet<Post> Posts { get; set; }
+
         int SaveChanges();
+
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }

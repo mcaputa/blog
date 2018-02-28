@@ -9,16 +9,16 @@ namespace Infrastructure.Repositories
 {
     public class PostRepository :  IPostRepository
     {
-        private readonly IRepository<Post> _postRepository;
+        private readonly IRepository<Post> postRepository;
 
         public PostRepository(IRepository<Post> postRepository)
         {
-            _postRepository = postRepository;
+            this.postRepository = postRepository;
         }
 
         public List<PostStorageModel> GetAllPosts()
         {
-            var allPosts = _postRepository.GetList().Select(post => new PostStorageModel()
+            var allPosts = this.postRepository.GetList().Select(post => new PostStorageModel()
             {
                 Description = post.Description,
                 Title = post.Title,
@@ -33,7 +33,7 @@ namespace Infrastructure.Repositories
 
         public PostStorageModel GetPost(int postId)
         {
-            var post = _postRepository.ReadById(postId);
+            var post = this.postRepository.ReadById(postId);
             var postStorageModel = new PostStorageModel()
             {
                 Id = post.Id,
@@ -55,7 +55,7 @@ namespace Infrastructure.Repositories
                 ModifiedOn = DateTime.Today
             };
 
-            _postRepository.Create(post);
+            this.postRepository.Create(post);
         }
     }
 }

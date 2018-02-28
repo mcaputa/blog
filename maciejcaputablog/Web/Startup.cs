@@ -18,18 +18,18 @@ namespace Web
 {
     public class Startup
     {
-        private readonly IConfiguration _configuration;
+        private readonly IConfiguration configuration;
 
         public Startup(IConfiguration configuration)
         {
-            _configuration = configuration;
+            this.configuration = configuration;
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(_configuration.GetConnectionString("Blog")));
+                options.UseSqlServer(this.configuration.GetConnectionString("Blog")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -37,8 +37,8 @@ namespace Web
 
             services.AddAuthentication().AddGoogle(options =>
             {
-                options.ClientId = _configuration["GoogleApi:ClientId"];
-                options.ClientSecret = _configuration["GoogleApi:ClientSecret"];
+                options.ClientId = this.configuration["GoogleApi:ClientId"];
+                options.ClientSecret = this.configuration["GoogleApi:ClientSecret"];
             });
 
             services.AddAutoMapper();

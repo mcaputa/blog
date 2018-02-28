@@ -1,7 +1,7 @@
-using System.ComponentModel.DataAnnotations;
-
-namespace maciejcaputablog.ViewModels
+namespace Web.ViewModels
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class ExternalLoginViewModel
     {
         [Required]
