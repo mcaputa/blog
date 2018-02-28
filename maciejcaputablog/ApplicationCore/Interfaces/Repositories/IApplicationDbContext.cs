@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Data
+namespace Core.Interfaces.Repositories
 {
     public interface IApplicationDbContext
     {

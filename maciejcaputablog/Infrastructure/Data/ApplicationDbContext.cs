@@ -1,4 +1,5 @@
 ﻿using Core.Entities;
+using Core.Interfaces.Repositories;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 

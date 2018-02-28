@@ -60,6 +60,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\images\clean architecture-min.PNG" />
     <None Include="wwwroot\node_modules\bootstrap\dist\css\bootstrap-grid.css.map" />
     <None Include="wwwroot\node_modules\bootstrap\dist\css\bootstrap-grid.min.css.map" />
     <None Include="wwwroot\node_modules\bootstrap\dist\css\bootstrap-reboot.css.map" />
