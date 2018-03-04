@@ -36,13 +36,13 @@ namespace Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(PostInputModel model)
         {
-            var postDomainModel = new PostDomainModel()
-            {
-                PostStorageModel = this.mapper.Map<PostInputModel, PostStorageModel>(model)
-            };
+            var post = this.mapper.Map<PostInputModel, PostStorageModel>(model);
+
+            var postDomainModel = new PostDomainModel(post);
+            
             this.postService.CreatePost(postDomainModel);
                 
-            return RedirectToAction("Index", "Home");
+            return this.RedirectToAction("Index", "Home");
         }
         
         [HttpGet]

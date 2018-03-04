@@ -28,11 +28,8 @@ namespace DomainServices.Services
         {
             var post = this.postRepository.GetPost(postId);
 
-            var postDomainModel = new PostDomainModel()
-            {
-                PostStorageModel = post
-            }; 
-
+            var postDomainModel = new PostDomainModel(post);
+            
             return postDomainModel;
         }
 
