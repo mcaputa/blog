@@ -350,6 +350,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ApplicationCore\Core.csproj" />
+    <ProjectReference Include="..\Common\Common.csproj" />
     <ProjectReference Include="..\DomainServices\DomainServices.csproj" />
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
