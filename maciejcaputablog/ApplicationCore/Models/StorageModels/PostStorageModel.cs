@@ -2,6 +2,14 @@
 {
     public class PostStorageModel
     {
+        public PostStorageModel(int id, string title, string description, string createdOn)
+        {
+            this.Id = id;
+            this.Title = title;
+            this.Description = description;
+            this.CreatedOn = createdOn;
+        }
+
         public int Id { get; set; }
 
         public string Title { get; set; }

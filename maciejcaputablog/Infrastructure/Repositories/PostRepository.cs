@@ -19,29 +19,27 @@ namespace Infrastructure.Repositories
 
         public List<PostStorageModel> GetAllPosts()
         {
-            var allPosts = this.postRepository.GetList().Select(post => new PostStorageModel()
-            {
-                Description = post.Description,
-                Title = post.Title,
-                CreatedOn = post.CreatedOn.ToShortDateString(),
-                Id = post.Id
-            })
-            .OrderByDescending(post => post.CreatedOn)
-            .ToList();
+            var posts = this.postRepository.GetList().OrderByDescending(post => post.CreatedOn);
 
-            return allPosts;
+            var postStorageModels = posts.Select(
+                post => new PostStorageModel(
+                    post.Id, 
+                    post.Title, 
+                    post.Description, 
+                    post.CreatedOn.ToShortDateString()))
+                .ToList();
+
+            return postStorageModels;
         }
 
         public PostStorageModel GetPost(int postId)
         {
             var post = this.postRepository.ReadById(postId);
-            var postStorageModel = new PostStorageModel()
-            {
-                Id = post.Id,
-                Description = post.Description,
-                Title = post.Title,
-                CreatedOn = post.CreatedOn.ToShortDateString()
-            };
+            var postStorageModel = new PostStorageModel(
+                post.Id,
+                post.Title,
+                post.Description,
+                post.CreatedOn.ToShortDateString());
 
             return postStorageModel;
         }
