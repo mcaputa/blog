@@ -1,6 +1,6 @@
-﻿using ApplicationCore.Models.DomainModels;
+﻿using Core.Models.DomainModels;
 
-namespace ApplicationCore.Interfaces.Services
+namespace Core.Interfaces.Services
 {
     public interface IPostService
     {

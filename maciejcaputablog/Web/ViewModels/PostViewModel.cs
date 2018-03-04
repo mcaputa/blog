@@ -1,4 +1,4 @@
-﻿using ApplicationCore.Models.DomainModels;
+﻿using Core.Models.DomainModels;
 
 namespace Web.ViewModels
 {

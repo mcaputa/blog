@@ -1,10 +1,12 @@
-﻿using ApplicationCore.Interfaces.Services;
-using ApplicationCore.Models.DomainModels;
-using ApplicationCore.Models.StorageModels;
-using AutoMapper;
+﻿using AutoMapper;
+
+using Core.Interfaces.Services;
+using Core.Models.DomainModels;
+using Core.Models.StorageModels;
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+
 using Web.ViewModels;
 
 namespace Web.Controllers

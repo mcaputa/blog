@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-using ApplicationCore.Models.StorageModels;
+using Core.Models.StorageModels;
 
 namespace Web.ViewModels
 {

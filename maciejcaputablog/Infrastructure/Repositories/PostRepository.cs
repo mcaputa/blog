@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ApplicationCore.Models.StorageModels;
+
 using Core.Entities;
 using Core.Interfaces.Repositories;
+using Core.Models.StorageModels;
 
 namespace Infrastructure.Repositories
 {
-    public class PostRepository :  IPostRepository
+    public class PostRepository : IPostRepository
     {
         private readonly IRepository<Post> postRepository;
 

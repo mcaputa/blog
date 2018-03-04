@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using ApplicationCore.Models.StorageModels;
+using Core.Models.StorageModels;
 
-namespace ApplicationCore.Models.DomainModels
+namespace Core.Models.DomainModels
 {
     public class AllPostsDomainModel
     {

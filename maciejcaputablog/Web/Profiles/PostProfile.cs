@@ -1,6 +1,8 @@
 ﻿using System;
-using ApplicationCore.Models.StorageModels;
+
 using AutoMapper;
+
+using Core.Models.StorageModels;
 
 namespace Web.Profiles
 {

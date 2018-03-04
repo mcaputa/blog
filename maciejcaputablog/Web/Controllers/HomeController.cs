@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics;
-using ApplicationCore.Interfaces.Services;
+using Core.Interfaces.Services;
 using maciejcaputablog.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Web.ViewModels;

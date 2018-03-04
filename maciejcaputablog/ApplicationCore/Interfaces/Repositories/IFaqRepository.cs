@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using ApplicationCore.Models.DomainModels;
-using ApplicationCore.Models.StorageModels;
 
-namespace ApplicationCore.Interfaces.Repositories
+using Core.Models.StorageModels;
+
+namespace Core.Interfaces.Repositories
 {
     public interface IFaqRepository
     {

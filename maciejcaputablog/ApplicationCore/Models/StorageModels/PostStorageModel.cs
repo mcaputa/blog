@@ -1,4 +1,4 @@
-﻿namespace ApplicationCore.Models.StorageModels
+﻿namespace Core.Models.StorageModels
 {
     public class PostStorageModel
     {
