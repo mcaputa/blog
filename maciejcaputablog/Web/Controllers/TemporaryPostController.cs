@@ -19,7 +19,9 @@ namespace Web.Controllers
         private readonly IMapper mapper;
         private readonly IPostService postService;
 
-        public TemporaryPostController(IMapper mapper, IPostService postService)
+        public TemporaryPostController(
+            IMapper mapper,
+            IPostService postService)
         {
             this.mapper = mapper;
             this.postService = postService;
