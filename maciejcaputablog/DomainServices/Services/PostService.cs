@@ -28,13 +28,9 @@ namespace DomainServices.Services
 
         public PostDomainModel GetPost(int postId)
         {
-            if (postId < 0) throw new ArgumentOutOfRangeException(nameof(postId));
-
             var post = this.postRepository.GetPost(postId);
 
             var postDomainModel = new PostDomainModel(post);
-
-            var pdm = new PostDomainModel(post);
             
             return postDomainModel;
         }

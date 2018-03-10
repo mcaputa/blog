@@ -9,6 +9,12 @@ namespace Core.Interfaces.Repositories
     {
         DbSet<Post> Posts { get; set; }
 
+        DbSet<FormContact> FormContacts { get; set; }
+
+        DbSet<Category> Categories { get; set; }
+
+        DbSet<Tag> Tags { get; set; }
+
         int SaveChanges();
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);

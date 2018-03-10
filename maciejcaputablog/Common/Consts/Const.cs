@@ -2,6 +2,6 @@
 {
     public static class Const
     {
-        private const int Bla = 12;
+        public const string EntityDateTimeFormat = "{0:DD-MM-YYYY}";
     }
 }

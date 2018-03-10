@@ -4,14 +4,17 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180310165741_AddNewInfrastructureOfTable")]
+    partial class AddNewInfrastructureOfTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,6 +54,8 @@ namespace Infrastructure.Data.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed");
 
+                    b.Property<int?>("PostId");
+
                     b.Property<string>("SecurityStamp");
 
                     b.Property<bool>("TwoFactorEnabled");
@@ -67,6 +72,8 @@ namespace Infrastructure.Data.Migrations
                         .IsUnique()
                         .HasName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.HasIndex("PostId");
 
                     b.ToTable("AspNetUsers");
                 });
@@ -112,19 +119,19 @@ namespace Infrastructure.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("ApplicationUserId");
-
                     b.Property<DateTime>("CreatedOn");
 
                     b.Property<string>("Description");
 
                     b.Property<DateTime>("ModifiedOn");
 
+                    b.Property<int?>("TagId");
+
                     b.Property<string>("Title");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId");
+                    b.HasIndex("TagId");
 
                     b.ToTable("Posts");
                 });
@@ -279,17 +286,24 @@ namespace Infrastructure.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Core.Entities.ApplicationUser", b =>
+                {
+                    b.HasOne("Core.Entities.Post", "Post")
+                        .WithMany("ApplicationUser")
+                        .HasForeignKey("PostId");
+                });
+
             modelBuilder.Entity("Core.Entities.Post", b =>
                 {
-                    b.HasOne("Core.Entities.ApplicationUser", "ApplicationUser")
+                    b.HasOne("Core.Entities.Tag")
                         .WithMany("Posts")
-                        .HasForeignKey("ApplicationUserId");
+                        .HasForeignKey("TagId");
                 });
 
             modelBuilder.Entity("Core.Entities.PostCategory", b =>
                 {
                     b.HasOne("Core.Entities.Category", "Category")
-                        .WithMany("Posts")
+                        .WithMany("Categories")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
 
@@ -307,7 +321,7 @@ namespace Infrastructure.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Core.Entities.Tag", "Tag")
-                        .WithMany("Posts")
+                        .WithMany()
                         .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

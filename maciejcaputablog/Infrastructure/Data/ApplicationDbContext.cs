@@ -14,12 +14,21 @@ namespace Infrastructure.Data
 
         public DbSet<Post> Posts { get; set; }
 
+        public DbSet<FormContact> FormContacts { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
+
+        public DbSet<Tag> Tags { get; set; }
+        
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<PostTag>()
+                .HasKey(t => new { t.PostId, t.TagId });
+            
+            builder.Entity<PostCategory>()
+                .HasKey(t => new { t.PostId, t.CategoryId });
+
             base.OnModelCreating(builder);
-            // Customize the ASP.NET Identity model and override the defaults if needed.
-            // For example, you can rename the ASP.NET Identity table names and more.
-            // Add your customizations after calling base.OnModelCreating(builder);
         }
     }
 }
