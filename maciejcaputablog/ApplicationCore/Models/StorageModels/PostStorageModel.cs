@@ -2,6 +2,10 @@
 {
     public class PostStorageModel
     {
+        public PostStorageModel()
+        {
+        }
+
         public PostStorageModel(int id, string title, string description, string createdOn)
         {
             this.Id = id;

@@ -6,7 +6,7 @@
     @for (var index = 0; index < Model.PostStorageModels.Count; index++)
     {
         var post = Model.PostStorageModels[index];
-        <div>
+        <div class="mb-1">
             <a asp-action="Read" asp-controller="TemporaryPost" asp-route-postId="@post.Id">@post.Title</a> <span class="pull-right"> @post.CreatedOn</span>
         </div>
     }

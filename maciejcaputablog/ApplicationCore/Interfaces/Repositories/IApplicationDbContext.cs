@@ -7,8 +7,6 @@ namespace Core.Interfaces.Repositories
 {
     public interface IApplicationDbContext
     {
-        DbSet<Faq> Faqs { get; set; }
-
         DbSet<Post> Posts { get; set; }
 
         int SaveChanges();

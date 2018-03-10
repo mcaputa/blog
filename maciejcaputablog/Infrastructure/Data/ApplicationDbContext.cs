@@ -12,8 +12,6 @@ namespace Infrastructure.Data
         {
         }
 
-        public DbSet<Faq> Faqs { get; set; }
-
         public DbSet<Post> Posts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
