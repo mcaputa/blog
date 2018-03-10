@@ -25,7 +25,7 @@ namespace Infrastructure.Repositories
                 post => new PostStorageModel(
                     post.Id, 
                     post.Title, 
-                    post.Description, 
+                    post.Text, 
                     post.CreatedOn.ToShortDateString()))
                 .ToList();
 
@@ -38,7 +38,7 @@ namespace Infrastructure.Repositories
             var postStorageModel = new PostStorageModel(
                 post.Id,
                 post.Title,
-                post.Description,
+                post.Text,
                 post.CreatedOn.ToShortDateString());
 
             return postStorageModel;
@@ -48,7 +48,7 @@ namespace Infrastructure.Repositories
         {
             var post = new Post()
             {
-                Description = postDomainModel.Description,
+                Text = postDomainModel.Description,
                 Title = postDomainModel.Title,
                 CreatedOn = DateTime.Today,
                 ModifiedOn = DateTime.Today,
