@@ -10,13 +10,9 @@ namespace Core.Entities
     {
         [Key]
         public int Id { get; set; }
-
-        [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = Const.EntityDateTimeFormat)]
+        
         public DateTime CreatedOn { get; set; }
-
-        [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = Const.EntityDateTimeFormat)]
+        
         public DateTime ModifiedOn { get; set; }
     }
 }

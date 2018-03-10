@@ -11,3 +11,13 @@
     width: 100% !important;
     margin-bottom: 1rem !important;
 }
+
+.temporary-post-list-properties {
+    display: flex;
+    justify-content: space-between;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}

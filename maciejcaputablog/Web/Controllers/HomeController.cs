@@ -21,7 +21,7 @@ namespace Web.Controllers
 
             var mainPageViewModel = new MainPageViewModel()
             {
-                PostStorageModels =  postDomainModel.PostStorageModels
+                PostStorageModels = postDomainModel.PostStorageModels
             };
 
             return View(mainPageViewModel);

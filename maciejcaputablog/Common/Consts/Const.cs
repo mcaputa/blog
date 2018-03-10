@@ -2,6 +2,6 @@
 {
     public static class Const
     {
-        public const string EntityDateTimeFormat = "{0:DD-MM-YYYY}";
+        public const string EntityDateTimeFormat = "dd.MM.yyyy";
     }
 }

@@ -8,6 +8,8 @@ using Core.Models.StorageModels;
 
 namespace Infrastructure.Repositories
 {
+    using Common.Consts;
+
     public class PostRepository : IPostRepository
     {
         private readonly IRepository<Post> postRepository;
@@ -26,7 +28,7 @@ namespace Infrastructure.Repositories
                     post.Id, 
                     post.Title, 
                     post.Text, 
-                    post.CreatedOn.ToShortDateString()))
+                    post.CreatedOn.ToString(Const.EntityDateTimeFormat)))
                 .ToList();
 
             return postStorageModels;
@@ -39,7 +41,7 @@ namespace Infrastructure.Repositories
                 post.Id,
                 post.Title,
                 post.Text,
-                post.CreatedOn.ToShortDateString());
+                post.CreatedOn.ToString(Const.EntityDateTimeFormat));
 
             return postStorageModel;
         }
