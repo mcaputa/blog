@@ -6,6 +6,8 @@ namespace DomainServices.Services
 {
     using System;
 
+    using Core.Entities;
+
     public class PostService : IPostService
     {
         private readonly IPostRepository postRepository;

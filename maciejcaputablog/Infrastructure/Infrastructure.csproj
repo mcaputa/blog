@@ -7,6 +7,8 @@
 
   <ItemGroup>
     <Compile Remove="Data\Migrations\20180310180940_FixPostAndUserRelation.cs" />
+    <Compile Remove="Data\Migrations\20180310203855_FixRelationBetweenPostAndUser.cs" />
+    <Compile Remove="Data\Migrations\20180310204009_FixRelationBetweenPostAndUser.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -21,5 +21,7 @@
         public string Description { get; set; }
 
         public string CreatedOn { get; set; }
+
+        public string UserId { get; set; }
     }
 }

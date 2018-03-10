@@ -11,6 +11,8 @@ using Web.ViewModels;
 
 namespace Web.Controllers
 {
+    using System.Security.Claims;
+
     using Web.InputModels;
 
     [Authorize]
@@ -39,6 +41,7 @@ namespace Web.Controllers
         public ActionResult Create(PostInputModel model)
         {
             var post = this.mapper.Map<PostInputModel, PostStorageModel>(model);
+            post.UserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
             var postDomainModel = new PostDomainModel(post);
             

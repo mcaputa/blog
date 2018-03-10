@@ -51,7 +51,8 @@ namespace Infrastructure.Repositories
                 Description = postDomainModel.Description,
                 Title = postDomainModel.Title,
                 CreatedOn = DateTime.Today,
-                ModifiedOn = DateTime.Today
+                ModifiedOn = DateTime.Today,
+                ApplicationUserId = postDomainModel.UserId
             };
 
             this.postRepository.Create(post);
