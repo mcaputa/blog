@@ -18,7 +18,7 @@
 <script>
 
 var disqus_config = function () {
-    this.page.url = 'https://maciejcaputa.pl/TemporaryPost/Read?postId=@Model.PostDomainModel.PostStorageModel.Id';
+    this.page.url = 'https://maciejcaputa.pl/@Model.PostDomainModel.PostStorageModel.FriendlyTitleUrl';
     this.page.identifier = @Model.PostDomainModel.PostStorageModel.Id;
 };
     (function() { 

@@ -1,4 +1,5 @@
-﻿@model Web.ViewModels.MainPageViewModel
+﻿@using Common.Consts
+@model Web.ViewModels.MainPageViewModel
 
 <h3 class="mx-auto w-50 mt-4">Posty</h3>
 
@@ -7,7 +8,7 @@
     {
         var post = Model.PostStorageModels[index];
     <div class="mb-1 temporary-post-list-properties ">
-        <div><a asp-action="Read" asp-controller="TemporaryPost" asp-route-postId="@post.Id">@post.Title</a></div> 
+        <div><a asp-route="@RouteNames.GetPostRoute" asp-route-friendlyTitle="@post.FriendlyTitleUrl">@post.Title</a></div> 
         <span> @post.CreatedOn</span>
     </div>
     }

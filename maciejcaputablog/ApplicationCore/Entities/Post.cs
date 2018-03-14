@@ -12,6 +12,8 @@ namespace Core.Entities
 
         public string Lead { get; set; }
 
+        public string FriendlyUrlTitle { get; set; }
+
         public string ApplicationUserId { get; set; }
 
         public ApplicationUser ApplicationUser { get; set; }

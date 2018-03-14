@@ -6,12 +6,18 @@
         {
         }
 
-        public PostStorageModel(int id, string title, string description, string createdOn)
+        public PostStorageModel(
+            int id, 
+            string title,
+            string description, 
+            string createdOn, 
+            string friendlyTitleUrl)
         {
             this.Id = id;
             this.Title = title;
             this.Description = description;
             this.CreatedOn = createdOn;
+            this.FriendlyTitleUrl = friendlyTitleUrl;
         }
 
         public int Id { get; set; }
@@ -23,5 +29,7 @@
         public string CreatedOn { get; set; }
 
         public string UserId { get; set; }
+
+        public string FriendlyTitleUrl { get; set; }
     }
 }

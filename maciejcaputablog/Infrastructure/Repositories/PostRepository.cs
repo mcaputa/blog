@@ -14,13 +14,17 @@ namespace Infrastructure.Repositories
     {
         private readonly IRepository<Post> postRepository;
 
-        public PostRepository(IRepository<Post> postRepository)
+        private readonly IApplicationDbContext context;
+
+        public PostRepository(IRepository<Post> postRepository, IApplicationDbContext context)
         {
             this.postRepository = postRepository;
+            this.context = context;
         }
 
         public List<PostStorageModel> GetAllPosts()
         {
+            
             var posts = this.postRepository.GetList().OrderByDescending(post => post.CreatedOn);
 
             var postStorageModels = posts.Select(
@@ -28,33 +32,36 @@ namespace Infrastructure.Repositories
                     post.Id, 
                     post.Title, 
                     post.Text, 
-                    post.CreatedOn.ToString(Const.EntityDateTimeFormat)))
+                    post.CreatedOn.ToString(Const.EntityDateTimeFormat), 
+                    post.FriendlyUrlTitle))
                 .ToList();
 
             return postStorageModels;
         }
 
-        public PostStorageModel GetPost(int postId)
+        public PostStorageModel GetPost(string friendlyTitle)
         {
-            var post = this.postRepository.ReadById(postId);
+            var currentPost = this.context.Posts.Single(post => post.FriendlyUrlTitle == friendlyTitle);
             var postStorageModel = new PostStorageModel(
-                post.Id,
-                post.Title,
-                post.Text,
-                post.CreatedOn.ToString(Const.EntityDateTimeFormat));
+                currentPost.Id,
+                currentPost.Title,
+                currentPost.Text,
+                currentPost.CreatedOn.ToString(Const.EntityDateTimeFormat),
+                currentPost.FriendlyUrlTitle);
 
             return postStorageModel;
         }
 
-        public void CreatePost(PostStorageModel postDomainModel)
+        public void CreatePost(PostStorageModel postStorageModel)
         {
             var post = new Post()
             {
-                Text = postDomainModel.Description,
-                Title = postDomainModel.Title,
+                Text = postStorageModel.Description,
+                Title = postStorageModel.Title,
                 CreatedOn = DateTime.Today,
                 ModifiedOn = DateTime.Today,
-                ApplicationUserId = postDomainModel.UserId
+                ApplicationUserId = postStorageModel.UserId, 
+                FriendlyUrlTitle = postStorageModel.FriendlyTitleUrl
             };
 
             this.postRepository.Create(post);

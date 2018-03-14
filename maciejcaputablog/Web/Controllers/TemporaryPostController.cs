@@ -13,6 +13,9 @@ namespace Web.Controllers
 {
     using System.Security.Claims;
 
+    using Common.Consts;
+    using Common.Extensions;
+
     using Web.InputModels;
 
     [Authorize]
@@ -41,6 +44,8 @@ namespace Web.Controllers
         public ActionResult Create(PostInputModel model)
         {
             var post = this.mapper.Map<PostInputModel, PostStorageModel>(model);
+            post.FriendlyTitleUrl = post.Title.GetFriendlyTitle(true);
+
             post.UserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
             var postDomainModel = new PostDomainModel(post);
@@ -49,19 +54,20 @@ namespace Web.Controllers
                 
             return this.RedirectToAction("Index", "Home");
         }
-        
+
         [HttpGet]
+        [Route("{friendlyTitle}", Name = RouteNames.GetPostRoute)]
         [AllowAnonymous]
-        public ActionResult Read(int postId)
+        public ActionResult Read(string friendlyTitle)
         {
-            var post = this.postService.GetPost(postId);
+            var post = this.postService.GetPost(friendlyTitle);
 
             var postViewModel = new PostViewModel()
             {
                 PostDomainModel = post
             };
 
-            return View(postViewModel);
+            return this.View(postViewModel);
         }
 
         [HttpGet]

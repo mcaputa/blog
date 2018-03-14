@@ -7,8 +7,10 @@ namespace Core.Interfaces.Repositories
     {
         List<PostStorageModel> GetAllPosts();
 
-        PostStorageModel GetPost(int postId);
+        //PostStorageModel GetPost(int postId);
 
-        void CreatePost(PostStorageModel postDomainModel);
+        PostStorageModel GetPost(string friendlyTitle);
+
+        void CreatePost(PostStorageModel postStorageModel);
     }
 }

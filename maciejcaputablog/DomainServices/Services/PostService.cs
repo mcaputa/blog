@@ -28,9 +28,9 @@ namespace DomainServices.Services
             return postsViewModel;
         }
 
-        public PostDomainModel GetPost(int postId)
+        public PostDomainModel GetPost(string friendlyTitle)
         {
-            var post = this.postRepository.GetPost(postId);
+            var post = this.postRepository.GetPost(friendlyTitle);
 
             var postDomainModel = new PostDomainModel(post);
             
