@@ -84,18 +84,18 @@ namespace Web.Controllers
             }
             else
             {
-                var user = new ApplicationUser { UserName = "Default", FullName = info.Principal.Identity.Name, Email = "" };
-                var results = await this.userManager.CreateAsync(user);
-                if (results.Succeeded)
-                    {
-                        results = await this.userManager.AddLoginAsync(user, info);
-                        if (results.Succeeded)
-                            {
-                                await this.signInManager.SignInAsync(user, isPersistent: false);
+                //var user = new ApplicationUser { UserName = "Default", FullName = info.Principal.Identity.Name, Email = "" };
+                //var results = await this.userManager.CreateAsync(user);
+                //if (results.Succeeded)
+                //    {
+                //        results = await this.userManager.AddLoginAsync(user, info);
+                //        if (results.Succeeded)
+                //            {
+                //                await this.signInManager.SignInAsync(user, isPersistent: false);
                                
-                                return RedirectToAction("Index", "TemporaryAdminPanel");
-                            }
-                    }
+                //                return RedirectToAction("Index", "TemporaryAdminPanel");
+                //            }
+                //    }
                 return Content("Nie możesz założyć konta :) ");
             }
         }

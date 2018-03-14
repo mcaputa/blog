@@ -6,6 +6,6 @@ namespace Core.Entities
     {
         public string Name { get; set; }
 
-        public ICollection<PostTag> Posts { get; set; } = new HashSet<PostTag>();
+        public ICollection<PostTag> PostTags { get; set; } = new HashSet<PostTag>();
     }
 }

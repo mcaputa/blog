@@ -4,7 +4,7 @@ namespace Core.Entities
 {
     using System.ComponentModel.DataAnnotations;
 
-    public sealed class Post : EntityBase
+    public class Post : EntityBase
     {
         public string Title { get; set; }
 
