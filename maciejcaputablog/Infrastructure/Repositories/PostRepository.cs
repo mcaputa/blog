@@ -24,7 +24,6 @@ namespace Infrastructure.Repositories
 
         public List<PostStorageModel> GetAllPosts()
         {
-            
             var posts = this.postRepository.GetList().OrderByDescending(post => post.CreatedOn);
 
             var postStorageModels = posts.Select(

@@ -1,160 +1,205 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Common.Extensions
+﻿namespace Common.Extensions
 {
+    using System.Text;
+
     public static class StringExtensions
     {
-        public static string GetFriendlyTitle(this string title, bool remapToAscii = false, int maxlength = 120)
+        public static string GetFriendlyTitle(this string title, bool remapToAscii = false, int maxLength = 120)
     {
         if (title == null)
         {
             return string.Empty;
         }
  
-        int length = title.Length;
-        bool prevdash = false;
-        StringBuilder stringBuilder = new StringBuilder(length);
-        char c;
- 
-        for (int i = 0; i < length; ++i)
+        int titleLength = title.Length;
+        bool isPreviousDash = false;
+        var friendlyTitle = new StringBuilder(titleLength);
+
+        for (int i = 0; i < titleLength; ++i)
         {
-            c = title[i];
-            if ((c >= 'a' && c <= 'z') || (c >= '0' && c <= '9'))
-            {
-                stringBuilder.Append(c);
-                prevdash = false;
-            }
-            else if (c >= 'A' && c <= 'Z')
-            {
-                // tricky way to convert to lower-case
-                stringBuilder.Append((char)(c | 32));
-                prevdash = false;
-            }
-            else if ((c == ' ') || (c == ',') || (c == '.') || (c == '/') ||
-                (c == '\\') || (c == '-') || (c == '_') || (c == '='))
-            {
-                if (!prevdash && (stringBuilder.Length > 0))
-                {
-                    stringBuilder.Append('-');
-                    prevdash = true;
-                }
-            }
-            else if (c >= 128)
-            {
-                int previousLength = stringBuilder.Length;
+            var titleLetter = title[i];
+
+            isPreviousDash = AddLetterInRange09az(titleLetter, friendlyTitle, isPreviousDash);
+
+            isPreviousDash = AddLetterInRangeAZ(titleLetter, friendlyTitle, isPreviousDash);
+
+            isPreviousDash = AddDashInsteadSpecialSign(titleLetter, friendlyTitle, isPreviousDash);
+
+            isPreviousDash = AddAsciiChar(titleLetter, friendlyTitle, isPreviousDash, remapToAscii);
  
-                if (remapToAscii)
-                {
-                    stringBuilder.Append(RemapInternationalCharToAscii(c));
-                }
-                else
-                {
-                    stringBuilder.Append(c);
-                }
- 
-                if (previousLength != stringBuilder.Length)
-                {
-                    prevdash = false;
-                }
-            }
- 
-            if (i == maxlength)
+            if (i == maxLength)
             {
                 break;
             }
         }
  
-        if (prevdash)
+        if (isPreviousDash)
         {
-            return stringBuilder.ToString().Substring(0, stringBuilder.Length - 1);
+            return friendlyTitle.ToString().Substring(0, friendlyTitle.Length - 1);
         }
-        else
-        {
-            return stringBuilder.ToString();
-        }
+
+        return friendlyTitle.ToString();
     }
+
+
+        private static bool AddLetterInRange09az(char titleLetter, StringBuilder friendlyTitle, bool isPreviousDash)
+        {
+            if ((titleLetter >= 'a' && titleLetter <= 'z') || (titleLetter >= '0' && titleLetter <= '9'))
+            {
+                friendlyTitle.Append(titleLetter);
+                isPreviousDash = false;
+            }
+
+            return isPreviousDash;
+        }
+
+        private static bool AddLetterInRangeAZ(char titleLetter, StringBuilder friendlyTitle, bool isPreviousDash)
+        {
+            if (titleLetter >= 'A' && titleLetter <= 'Z')
+            {
+                // tricky way to convert to lower-case
+                friendlyTitle.Append((char)(titleLetter | 32));
+                isPreviousDash = false;
+            }
+            
+            return isPreviousDash;
+        }
+
+        private static bool AddDashInsteadSpecialSign(char titleLetter, StringBuilder friendlyTitle, bool isPreviousDash)
+        {
+            if ((titleLetter == ' ') || (titleLetter == ',') || (titleLetter == '.') || (titleLetter == '/') ||
+                (titleLetter == '\\') || (titleLetter == '-') || (titleLetter == '_') || (titleLetter == '='))
+            {
+                if (!isPreviousDash && (friendlyTitle.Length > 0))
+                {
+                    friendlyTitle.Append('-');
+                    isPreviousDash = true;
+                }
+            }
+
+            return isPreviousDash;
+        }
+
+        private static bool AddAsciiChar(char titleLetter, StringBuilder friendlyTitle, bool isPreviousDash, bool remapToAscii)
+        {
+            var firstInternationalLetterNumber = 128;
+
+            if (titleLetter >= firstInternationalLetterNumber)
+            {
+                int previousLength = friendlyTitle.Length;
+ 
+                if (remapToAscii)
+                {
+                    friendlyTitle.Append(RemapInternationalCharToAscii(titleLetter));
+                }
+                else
+                {
+                    friendlyTitle.Append(titleLetter);
+                }
+ 
+                if (previousLength != friendlyTitle.Length)
+                {
+                    isPreviousDash = false;
+                }
+            }
+
+            return isPreviousDash;
+        }
 
         private static string RemapInternationalCharToAscii(char character)
         {
-            string s = character.ToString().ToLowerInvariant();
-            if ("àåáâäãåąā".Contains(s))
+            string titleLetter = character.ToString().ToLowerInvariant();
+            if ("àåáâäãåąā".Contains(titleLetter))
             {
                 return "a";
             }
-            else if ("èéêëę".Contains(s))
+
+            if ("èéêëę".Contains(titleLetter))
             {
                 return "e";
             }
-            else if ("ìíîïı".Contains(s))
+
+            if ("ìíîïı".Contains(titleLetter))
             {
                 return "i";
             }
-            else if ("òóôõöøőð".Contains(s))
+
+            if ("òóôõöøőð".Contains(titleLetter))
             {
                 return "o";
             }
-            else if ("ùúûüŭů".Contains(s))
+
+            if ("ùúûüŭů".Contains(titleLetter))
             {
                 return "u";
             }
-            else if ("çćčĉ".Contains(s))
+
+            if ("çćčĉ".Contains(titleLetter))
             {
                 return "c";
             }
-            else if ("żźž".Contains(s))
+
+            if ("żźž".Contains(titleLetter))
             {
                 return "z";
             }
-            else if ("śşšŝ".Contains(s))
+
+            if ("śşšŝ".Contains(titleLetter))
             {
                 return "s";
             }
-            else if ("ñń".Contains(s))
+
+            if ("ñń".Contains(titleLetter))
             {
                 return "n";
             }
-            else if ("ýÿ".Contains(s))
+
+            if ("ýÿ".Contains(titleLetter))
             {
                 return "y";
             }
-            else if ("ğĝ".Contains(s))
+
+            if ("ğĝ".Contains(titleLetter))
             {
                 return "g";
             }
-            else if (character == 'ř')
+
+            if (character == 'ř')
             {
                 return "r";
             }
-            else if (character == 'ł')
+
+            if (character == 'ł')
             {
                 return "l";
             }
-            else if (character == 'đ')
+
+            if (character == 'đ')
             {
                 return "d";
             }
-            else if (character == 'ß')
+
+            if (character == 'ß')
             {
                 return "ss";
             }
-            else if (character == 'Þ')
+
+            if (character == 'Þ')
             {
                 return "th";
             }
-            else if (character == 'ĥ')
+
+            if (character == 'ĥ')
             {
                 return "h";
             }
-            else if (character == 'ĵ')
+
+            if (character == 'ĵ')
             {
                 return "j";
             }
-            else
-            {
-                return string.Empty;
-            }
+
+            return string.Empty;
         }
     }
 }

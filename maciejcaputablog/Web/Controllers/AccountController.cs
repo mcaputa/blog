@@ -80,7 +80,7 @@ namespace Web.Controllers
             var result = await this.signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false, bypassTwoFactor: true);
             if (result.Succeeded)
             {
-                return RedirectToAction("Index", "TemporaryAdminPanel");
+                return this.RedirectToAction("Index", "TemporaryAdminPanel", null);
             }
             else
             {
