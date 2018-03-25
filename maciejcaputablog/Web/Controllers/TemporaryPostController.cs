@@ -44,7 +44,8 @@ namespace Web.Controllers
         public ActionResult Create(PostInputModel model)
         {
             var post = this.mapper.Map<PostInputModel, PostStorageModel>(model);
-            post.FriendlyTitleUrl = post.Title.GetFriendlyTitle(true);
+
+            post.FriendlyTitleUrl = post.Title.GetFriendlyTitle();
 
             post.UserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
 

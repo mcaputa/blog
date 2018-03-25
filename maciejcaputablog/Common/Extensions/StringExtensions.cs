@@ -4,7 +4,7 @@
 
     public static class StringExtensions
     {
-        public static string GetFriendlyTitle(this string title, bool remapToAscii = false, int maxLength = 120)
+        public static string GetFriendlyTitle(this string title, bool remapToAscii = true, int maxLength = 120)
     {
         if (title == null)
         {
@@ -15,9 +15,9 @@
         bool isPreviousDash = false;
         var friendlyTitle = new StringBuilder(titleLength);
 
-        for (int i = 0; i < titleLength; ++i)
+        for (int letterIndex = 0; letterIndex < titleLength; ++letterIndex)
         {
-            var titleLetter = title[i];
+            var titleLetter = title[letterIndex];
 
             isPreviousDash = AddLetterInRange09az(titleLetter, friendlyTitle, isPreviousDash);
 
@@ -27,7 +27,7 @@
 
             isPreviousDash = AddAsciiChar(titleLetter, friendlyTitle, isPreviousDash, remapToAscii);
  
-            if (i == maxLength)
+            if (letterIndex == maxLength)
             {
                 break;
             }
