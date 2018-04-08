@@ -19,6 +19,8 @@ namespace Infrastructure.Data
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<Tag> Tags { get; set; }
+
+        public DbSet<PostSeo> PostSeos { get; set; }
         
         protected override void OnModelCreating(ModelBuilder builder)
         {

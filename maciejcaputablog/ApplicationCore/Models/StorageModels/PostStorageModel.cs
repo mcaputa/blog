@@ -11,13 +11,15 @@
             string title,
             string description, 
             string createdOn, 
-            string friendlyTitleUrl)
+            string friendlyTitleUrl,
+            PostSeoStorageModel postSeoStorageModel)
         {
             this.Id = id;
             this.Title = title;
             this.Description = description;
             this.CreatedOn = createdOn;
             this.FriendlyTitleUrl = friendlyTitleUrl;
+            this.PostSeoStorageModel = postSeoStorageModel;
         }
 
         public int Id { get; set; }
@@ -31,5 +33,7 @@
         public string UserId { get; set; }
 
         public string FriendlyTitleUrl { get; set; }
+
+        public PostSeoStorageModel PostSeoStorageModel { get; set; }
     }
 }

@@ -16,6 +16,8 @@ namespace Core.Entities
 
         public string ApplicationUserId { get; set; }
 
+        public PostSeo PostSeo { get; set; }
+
         public ApplicationUser ApplicationUser { get; set; }
 
         public ICollection<PostCategory> PostCategories { get; set; } = new HashSet<PostCategory>();

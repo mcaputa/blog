@@ -1,4 +1,15 @@
 ﻿@model Web.ViewModels.PostViewModel
+@section SeoMetaTags
+    {
+    <title>@Model.PostDomainModel.PostStorageModel.PostSeoStorageModel.Title</title>
+    <meta name="description" content="@Model.PostDomainModel.PostStorageModel.PostSeoStorageModel.Description">
+    <meta property="og:title" content="@Model.PostDomainModel.PostStorageModel.PostSeoStorageModel.Title">
+    <meta property="og:description" content="@Model.PostDomainModel.PostStorageModel.PostSeoStorageModel.Description">
+    <meta property="og:url" content="https://maciejcaputa.pl/@Model.PostDomainModel.PostStorageModel.FriendlyTitleUrl">
+    <meta property="og:site_name" content="Maciej Caputa - z programowaniem w tle">
+    <meta property="og:type" content="article">
+}
+
 <div class="row">
     <div class="col-lg-8">
         <h1 class="mt-4">@Model.PostDomainModel.PostStorageModel.Title</h1>
@@ -12,7 +23,7 @@
         <!-- Post Content -->
         @Html.Raw(Model.PostDomainModel.PostStorageModel.Description)
         <div id="disqus_thread"></div>
-    </div> 
+    </div>
 </div>
 
 <script>
@@ -21,7 +32,7 @@ var disqus_config = function () {
     this.page.url = 'https://maciejcaputa.pl/@Model.PostDomainModel.PostStorageModel.FriendlyTitleUrl';
     this.page.identifier = @Model.PostDomainModel.PostStorageModel.Id;
 };
-    (function() { 
+    (function() {
         var d = document, s = d.createElement('script');
         s.src = 'https://https-maciejcaputa-pl.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());

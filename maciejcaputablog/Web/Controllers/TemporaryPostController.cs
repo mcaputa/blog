@@ -12,6 +12,7 @@ using Web.ViewModels;
 namespace Web.Controllers
 {
     using System.Security.Claims;
+    using System.Text;
 
     using Common.Consts;
     using Common.Extensions;

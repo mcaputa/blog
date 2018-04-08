@@ -28,6 +28,8 @@ namespace Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            services.AddMemoryCache();
+            services.AddResponseCaching();
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(this.configuration.GetConnectionString("Blog")));
 
@@ -83,6 +85,8 @@ namespace Web
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+            app.UseResponseCaching();
             app.UseStaticFiles();
             app.UseRewriter(new RewriteOptions().AddRedirectToHttpsPermanent());
 

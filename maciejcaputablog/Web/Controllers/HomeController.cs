@@ -6,6 +6,8 @@ using Web.ViewModels;
 
 namespace Web.Controllers
 {
+    using System.Text;
+
     public class HomeController : Controller
     {
         private readonly IPostService postService;
@@ -17,7 +19,7 @@ namespace Web.Controllers
 
         public IActionResult Index()
         {
-            var postDomainModel= this.postService.GetAllPosts();
+            var postDomainModel = this.postService.GetAllPosts();
 
             var mainPageViewModel = new MainPageViewModel()
             {
@@ -25,6 +27,19 @@ namespace Web.Controllers
             };
 
             return View(mainPageViewModel);
+        }
+        
+        [HttpGet]
+        [ResponseCache(Duration = 2592000)]
+        [Route("robots.txt")]
+        public ContentResult RobotsText()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+        
+            stringBuilder.AppendLine("User-agent: *");
+            stringBuilder.AppendLine("Disallow: ");
+        
+            return this.Content(stringBuilder.ToString(), "text/plain", Encoding.UTF8);
         }
 
         public IActionResult Contact()
