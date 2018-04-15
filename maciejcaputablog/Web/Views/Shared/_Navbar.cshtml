@@ -1,21 +1,57 @@
-﻿<nav class="nav d-flex justify-content-between mt-2 navbar-properties">
-
-    <a asp-controller="Home" asp-action="Index" class="mr-2 text-dark">
-        <i class="fa fa-home"></i>
-    </a>
-    <a class="text-dark" asp-controller="Home" asp-action="WhyIsSoEmptyHere">Co tu tak pusto?</a>
-
-    <div>
-        <a class="text-dark" href="https://www.instagram.com/maciejcaputa/" target="_blank"><i class="fa pr-2  fa-instagram padding"></i></a>
-        <a class="text-dark" href="https://www.facebook.com/zprogramowaniemwtle/" target="_blank"><i class="fa pr-2  fa-facebook-square"></i></a>
-        <a class="text-dark" href="https://www.linkedin.com/in/caputamaciej/" target="_blank"><i class="fa pr-2  fa-linkedin"></i></a>
-    </div>
-    <a class="text-dark" href="https://github.com/mcaputa" target="_blank">
-        <i class="fa fa-github"></i>
-        <text class="text-dark p-2">Repozytorium kodu</text>
-    </a>
-    <a class="text-dark" href="https://goo.gl/ttQPVi" target="_blank">Plan prac</a>
-    <a class="text-dark" asp-controller="Home" asp-action="Contact">
-        <text class="text-dark">Kontakt</text>
-    </a>
-</nav>
+﻿<header>
+    <nav class="navbar navbar-light fixed-top navbar-expand-md">
+        <a asp-controller="Home" asp-action="Index" id="brand" class="navbar-brand">Maciej Caputa </a>
+        <button class="navbar-toggler m-3" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="menu-top-info-properties">
+            <div class="info-bar-properties">
+                <div class="container">
+                    <div class="clearfix">
+                        <div class="float-left text-white info-group-action">
+                            <a asp-controller="Home" asp-action="Contact">
+                                <text>Kontakt</text>
+                            </a>
+                        </div>
+                        <ul class="info-social-bar float-right">
+                            <li><a href="https://www.facebook.com/zprogramowaniemwtle/" target="_blank"><i class="fa pr-3  fa-facebook-f"></i></a></li>
+                            <li><a href="https://www.linkedin.com/in/caputamaciej/" target="_blank"><i class="fa pr-3  fa-linkedin-square"></i></a></li>
+                            <li><a href="https://www.instagram.com/maciejcaputa/" target="_blank"><i class="fa pr-3  fa-instagram padding"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container brand-menu-container-properties">
+                <div class="navabar-brand-properties">
+                    <h1 class="d-flex justify-content-center brand-title-properties mt-3">
+                        <span><a asp-controller="Home" asp-action="Index"  >Maciej Caputa</a></span>
+                    </h1>
+                    <h2 class="d-flex justify-content-center brand-slogan-properties">
+                        <span> <a asp-controller="Home" asp-action="Index">Z programowaniem w tle</a></span>
+                    </h2>
+                </div>
+                <div class="list-categories-properties pt-3 pb-3 collapse navbar-collapse" id="navbarToggler">
+                    <ul class="d-flex justify-content-around">
+                        <li>
+                            <a asp-controller="Home" asp-action="Index" class="mr-2 text-dark home">
+                                <i class="fa fa-home"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="text-dark" asp-controller="Home" asp-action="WhyIsSoEmptyHere">Co tu tak pusto?</a>
+                        </li>
+                        <li>
+                            <a class="text-dark" href="https://github.com/mcaputa" target="_blank">
+                                <i class="fa fa-github"></i>
+                                <text class="text-dark p-2">Repozytorium kodu</text>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="text-dark" href="https://goo.gl/ttQPVi" target="_blank">Plan prac</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
