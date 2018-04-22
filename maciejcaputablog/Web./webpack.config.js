@@ -6,10 +6,10 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     context: __dirname + "/wwwroot",
-    entry: './js/site.js',
+    entry: './dest/app.js',
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, 'wwwroot/dist')
+        path: path.resolve(__dirname, 'wwwroot/dest')
     },
     //mode: 'development',
     watch:true,
@@ -31,15 +31,12 @@ module.exports = {
                 test: /\.(scss)$/,
                 use: [
                     {
-                        // Adds CSS to the DOM by injecting a `<style>` tag
                         loader: 'style-loader'
                     },
                     {
-                        // Interprets `@import` and `url()` like `import/require()` and will resolve them
                         loader: 'css-loader'
                     },
                     {
-                        // Loader for webpack to process CSS with PostCSS
                         loader: 'postcss-loader',
                         options: {
                             plugins: function () {
@@ -50,7 +47,6 @@ module.exports = {
                         }
                     },
                     {
-                        // Loads a SASS/SCSS file and compiles it to CSS
                         loader: 'sass-loader'
                     }
                 ]
@@ -62,7 +58,7 @@ module.exports = {
                     options: {
                         name: '[name].[ext]',
                         outputPath: 'fonts/',    // where the fonts will go
-                        publicPath: '../wwwroot/dist/fonts/'       // override the default path
+                        publicPath: '../wwwroot/dest/fonts/'       // override the default path
                     }
                 }]
             }

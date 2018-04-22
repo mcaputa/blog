@@ -1,7 +1,4 @@
-﻿import 'bootstrap';
-import '../sass/main.scss'
-
-(function ($) {
+﻿(function ($) {
     $(document).ready(function () {
 
         // fade in .navbar
