@@ -1,0 +1,20 @@
+﻿@using Common.Consts
+@model Web.ViewModels.MainPageViewModel
+
+@section SeoMetaTags
+{
+    <title>Maciej Caputa - z programowaniem w tle</title>
+}
+
+<h3 class="mx-auto w-50 mt-4">Posty</h3>
+
+<div class="mx-auto w-50 mt-4">
+    @for (var index = 0; index < Model.PostStorageModels.Count; index++)
+    {
+        var post = Model.PostStorageModels[index];
+    <div class="mb-1 temporary-post-list-properties ">
+        <div><a asp-route="@RouteNames.GetPostRoute" asp-route-friendlyTitle="@post.FriendlyTitleUrl">@post.Title</a></div> 
+        <span> @post.CreatedOn</span>
+    </div>
+    }
+</div>

@@ -1,0 +1,34 @@
+﻿@using System.Collections.Generic
+@using System.Linq
+@using Core.Entities
+@using maciejcaputablog.ViewModels
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Authentication
+@using Web.ViewModels
+@model Web.ViewModels.LoginViewModel
+@inject SignInManager<ApplicationUser> SignInManager
+
+<h2>@ViewData["Title"]</h2>
+<div class="row">
+            @{
+                var loginProviders = (await SignInManager.GetExternalAuthenticationSchemesAsync()).First();
+                
+                    <form asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+                        <div>
+                            <p>
+                                <button type="submit" class="btn btn-default" name="provider" value="@loginProviders.Name" title="Log in using your @loginProviders.DisplayName account">@loginProviders.Name</button>
+                            </p>
+                        </div>
+                    </form>
+            }
+    @if (User.Identity.IsAuthenticated)
+    {
+        <form asp-action="Logout" method="post" class="form-horizontal">
+            <div>
+                <p>
+                    <button type="submit" class="btn btn-default" >Wyloguj</button>
+                </p>
+            </div>
+        </form>
+    }
+</div>
