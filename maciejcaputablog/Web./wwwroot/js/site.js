@@ -1,6 +1,15 @@
 ﻿(function ($) {
     $(document).ready(function () {
 
+        //$('.slider-container-properties').slick({
+        //    accessibility: true,
+        //    adaptiveHeight: true,
+        //    variableWidth: true,
+        //    infinite: true,
+        //    slidesToShow: 3,
+        //    slidesToScroll: 3
+        //});
+
         // fade in .navbar
         $(function () {
             $(window).scroll(function () {

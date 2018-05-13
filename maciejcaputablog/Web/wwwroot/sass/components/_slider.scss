@@ -1,0 +1,16 @@
+﻿.slider-container-properties{
+    height:55vh;
+    width:100%;
+    margin-top:5vh;
+    margin-bottom:5vh;
+    border:1px solid black;
+    display:flex;
+    flex-direction:row;
+
+    .slider-element-container-properties{
+        height:100%;
+        max-width:34%;
+        width:100%;
+        border:1px solid blue;
+    }
+}

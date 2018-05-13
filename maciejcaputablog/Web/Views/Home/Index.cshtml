@@ -2,19 +2,126 @@
 @model Web.ViewModels.MainPageViewModel
 
 @section SeoMetaTags
-{
+    {
     <title>Maciej Caputa - z programowaniem w tle</title>
 }
 
-<h3 class="mx-auto w-50 mt-4">Posty</h3>
-
-<div class="mx-auto w-50 mt-4">
-    @for (var index = 0; index < Model.PostStorageModels.Count; index++)
+@section Head
     {
-        var post = Model.PostStorageModels[index];
-    <div class="mb-1 temporary-post-list-properties ">
-        <div><a asp-route="@RouteNames.GetPostRoute" asp-route-friendlyTitle="@post.FriendlyTitleUrl">@post.Title</a></div> 
-        <span> @post.CreatedOn</span>
+    <a rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"></a>
+    <a rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css"></a>
+}
+<div>
+    <div class="slider-container-properties">
+        <div class="slider-element-container-properties"></div>
+        <div class="slider-element-container-properties"></div>
+        <div class="slider-element-container-properties"></div>
     </div>
-    }
+
+    <div class="row main-site-container">
+        <div class="col-md-8 left-main-container">
+            <div class="last-posts-container">
+                <h3 class="last-posts-text-properties">
+                    Ostatnie posty
+                </h3>
+                <div class="row last-posts-grid">
+                    @for (var index = 0; index < Model.PostStorageModels.Count; index++)
+                    {
+                        var post = Model.PostStorageModels[index];
+                        <article class="col-md-6 single-article-container">
+                            <div class="single-article-conteiner-inner">
+                                <header class="article-header">
+                                    <a asp-route="@RouteNames.GetPostRoute" asp-route-friendlyTitle="@post.FriendlyTitleUrl">
+                                        <div class="article-header-image-container">
+                                            <img class="article-header-img" src="https://source.unsplash.com/random/340x226/?nature,water/@post.Id" />
+                                        </div>
+                                        <h2 class="article-header-text">@post.Title</h2>
+                                    </a>
+                                    <div class="article-info-container">
+                                        <div>
+                                            <i class="far fa-calendar-alt"></i> <span class="ml-1">@post.CreatedOn</span>
+                                        </div>
+                                        <div>
+                                            <i class="far fa-comment"></i>
+                                            <span>8</span>
+                                        </div>
+                                    </div>
+                                </header>
+                                <p class="article-lead-container">Lorem ipsum, luroem ipsum, Lorem ipsum, Lorem ipsum, luroem ipsum, Lorem ipsumLorem ipsum, luroem ipsum, Lorem ipsumLorem ipsum, luroem ipsum, Lorem ipsumLorem ipsum, luroem ipsum</p>
+                                <footer class="article-footer-container">
+                                    <div>
+                                        <i class="fab fa-facebook-square dark-blue"></i>
+                                        <i class="fab fa-twitter grey"></i>
+                                        <i class="fab fa-google-plus-g dark-blue"></i>
+                                    </div>
+                                    <div>
+                                        <a asp-route="@RouteNames.GetPostRoute" asp-route-friendlyTitle="@post.FriendlyTitleUrl"><i class="fas fa-arrow-circle-right pr-2"></i></a>
+                                    </div>
+                                </footer>
+                            </div>
+                        </article>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 right-main-container">
+            <div class="about-me-container">
+                <div class="about-me-text">
+                    Kim jestem?
+                </div>
+                <div class="about-me-image-container">
+                    <div class="about-me-image-container-inner">
+                        <img src="~/images/me.jpg" class="about-me-image" />
+                    </div>
+                </div>
+                <div class="about-me-description">
+                    <div>
+                        Lorem ipsum, luroem ipsum, Lorem ipsum, Lorem ipsum, luroem ipsum, Lorem ipsumLorem ipsum, luroem ipsum, Lorem ipsumLorem ipsum, luroem ipsum, Lorem ipsumLorem ipsum, luroem ipsum
+                    </div>
+                </div>
+            </div>
+            <div class="social-media-container">
+                <div class="social-media-text">Gdzie możesz mnie spotkać?</div>
+                <div class="social-media-button-group">
+                    <a class="facebook-color" href="https://www.facebook.com/zprogramowaniemwtle/" target="_blank"><i class="fab pr-3 fa-facebook-square"></i></a>
+                    <a class="linkedin-color" href="https://www.linkedin.com/in/caputamaciej/" target="_blank"><i class="fab fa-linkedin pr-3"></i></a>
+                    <a class="instagram-color" href="https://www.instagram.com/maciejcaputa/" target="_blank"><i class="fab pr-3  fa-instagram padding"></i></a>
+                    <a class="github-color" href="https://github.com/mcaputa" target="_blank">
+                        <i class="fab fa-github-square"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="popular-posts-container">
+                <div class="popular-posts-text">
+                    Najpopularniejsze posty
+                </div>
+                @for (int i = 0; i < 3; i++)
+                {
+                    var post = Model.PostStorageModels[i];
+                
+                    <a asp-route="@RouteNames.GetPostRoute" asp-route-friendlyTitle="@post.FriendlyTitleUrl"><div class="popular-post-container">
+                    <div class="popular-post-image-container">
+                        <img class="popular-post-image" src="https://source.unsplash.com/random/340x150/?nature,water/@post.Id" />
+                        <div class="popular-post-text">@post.Title</div>
+                        <div class="popular-post-info-container">
+                            <div>
+                                <i class="far fa-calendar-alt"></i> <span class="ml-1">@post.CreatedOn</span>
+                            </div>
+                            <div>
+                                <i class="far fa-comment"></i>
+                                <span>8</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
 </div>
+
+@section JS
+    {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+}

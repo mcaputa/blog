@@ -1,9 +1,67 @@
-﻿@import url("https://fonts.googleapis.com/css?family=Fira+Sans");
-@import url("https://fonts.googleapis.com/css?family=Roboto+Slab");
-@import url("https://fonts.googleapis.com/css?family=Fira+Sans");
-@import url("https://fonts.googleapis.com/css?family=Roboto+Slab");
+﻿/*$fa-font-path: "~font-awesome/fonts";*/
+/*@import "~font-awesome/scss/font-awesome";*/
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans|Roboto|Roboto+Slab");
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans|Roboto|Roboto+Slab");
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans|Roboto|Roboto+Slab");
+.dark-blue {
+  color: #33598C; }
+
+.grey {
+  color: #ADB5BB; }
+
+.facebook-color {
+  color: #3b5998 !important; }
+
+.linkedin-color {
+  color: #0077B5 !important; }
+
+.instagram-color {
+  color: #8a3ab9 !important; }
+
+.github-color {
+  color: #4078c0 !important; }
+
+h3 {
+  font-size: 1.5rem;
+  font-family: "Roboto Slab", serif; }
+
+a, a:hover, a:visited {
+  color: black; }
+
+.slider-container-properties {
+  height: 55vh;
+  width: 100%;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row; }
+  .slider-container-properties .slider-element-container-properties {
+    height: 100%;
+    max-width: 34%;
+    width: 100%;
+    border: 1px solid blue; }
+
+.dark-blue {
+  color: #33598C; }
+
+.grey {
+  color: #ADB5BB; }
+
+.facebook-color {
+  color: #3b5998 !important; }
+
+.linkedin-color {
+  color: #0077B5 !important; }
+
+.instagram-color {
+  color: #8a3ab9 !important; }
+
+.github-color {
+  color: #4078c0 !important; }
+
 ul {
-  margin-bottom: 0; }
+  margin-bottom: 0 !important; }
 
 body {
   padding-top: 200px; }
@@ -58,7 +116,7 @@ body {
     border-width: 1px;
     border-style: solid;
     font-family: "Roboto Slab", serif;
-    font-size: 145%; }
+    font-size: 1.5rem; }
     .brand-menu-container-properties .list-categories-properties ul {
       width: 100%; }
       .brand-menu-container-properties .list-categories-properties ul li {
@@ -86,9 +144,9 @@ body {
     padding: 8vh; }
   .navbar {
     background-color: white;
-    opacity: 0.95; } }
+    opacity: 1; } }
 
-.navbar-brand {
+.navbar > .navbar-brand {
   display: none; }
 
 #brand {
@@ -98,5 +156,153 @@ body {
   font-size: 1.3em; }
 
 .navbar {
-  padding: 0; }
+  padding: 0 !important; }
+
+.trying {
+  background-color: blue;
+  width: 100px;
+  height: 100px; }
+
+.main-site-container .left-main-container .last-posts-container .last-posts-text-properties {
+  font-weight: 600;
+  padding-bottom: 2%;
+  border-bottom: 1px solid #F3F5F6; }
+
+.main-site-container .left-main-container .last-posts-container .last-posts-grid .single-article-container {
+  margin-top: 3%;
+  padding-left: 3%;
+  padding-right: 3%; }
+  .main-site-container .left-main-container .last-posts-container .last-posts-grid .single-article-container .single-article-conteiner-inner {
+    border-bottom: 1px solid #ADB5BB; }
+    .main-site-container .left-main-container .last-posts-container .last-posts-grid .single-article-container .single-article-conteiner-inner .article-header .article-header-image-container {
+      overflow: hidden; }
+      .main-site-container .left-main-container .last-posts-container .last-posts-grid .single-article-container .single-article-conteiner-inner .article-header .article-header-image-container .article-header-img {
+        transition: transform .5s; }
+        .main-site-container .left-main-container .last-posts-container .last-posts-grid .single-article-container .single-article-conteiner-inner .article-header .article-header-image-container .article-header-img:hover {
+          -ms-transform: scale3d(1.2, 1.2, 1);
+          /* IE 9 */
+          -webkit-transform: scale3d(1.2, 1.2, 1);
+          /* Safari 3-8 */
+          transform: scale3d(1.2, 1.2, 1); }
+    .main-site-container .left-main-container .last-posts-container .last-posts-grid .single-article-container .single-article-conteiner-inner .article-header .article-header-text {
+      margin: 8% 0 3% 0;
+      font-weight: bold;
+      font-family: "Roboto Slab", serif;
+      font-size: 1.4rem;
+      text-align: center;
+      vertical-align: middle; }
+    .main-site-container .left-main-container .last-posts-container .last-posts-grid .single-article-container .single-article-conteiner-inner .article-header .article-info-container {
+      display: flex;
+      justify-content: space-around;
+      font-family: "Roboto", sans-serif;
+      margin-bottom: 6%; }
+    .main-site-container .left-main-container .last-posts-container .last-posts-grid .single-article-container .single-article-conteiner-inner .article-lead-container {
+      font-size: 0.9rem;
+      font-family: "Roboto", sans-serif;
+      text-align: justify;
+      text-justify: inter-word; }
+    .main-site-container .left-main-container .last-posts-container .last-posts-grid .single-article-container .single-article-conteiner-inner .article-footer-container {
+      display: flex;
+      justify-content: space-between;
+      font-size: 2rem;
+      margin-bottom: 5%; }
+
+.main-site-container .right-main-container .about-me-container {
+  width: 100%;
+  margin-bottom: 7%; }
+  .main-site-container .right-main-container .about-me-container .about-me-text {
+    background-color: #33598C;
+    color: white;
+    font-family: "Roboto Slab", serif;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: 1px solid #33598C;
+    border-radius: 10px;
+    text-align: center; }
+  .main-site-container .right-main-container .about-me-container .about-me-image-container .about-me-image-container-inner {
+    text-align: center; }
+    .main-site-container .right-main-container .about-me-container .about-me-image-container .about-me-image-container-inner .about-me-image {
+      margin-top: 7%;
+      height: 300px; }
+  .main-site-container .right-main-container .about-me-container .about-me-description {
+    padding: 7% 2% 0% 2%;
+    text-align: justify;
+    font-size: 0.9rem;
+    font-family: "Roboto Slab", serif; }
+
+.main-site-container .right-main-container .social-media-container {
+  margin-bottom: 7%; }
+  .main-site-container .right-main-container .social-media-container .social-media-text {
+    text-align: center;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    font-family: "Roboto Slab", serif;
+    padding: 1% 0 1% 0; }
+  .main-site-container .right-main-container .social-media-container .social-media-button-group {
+    margin-top: 7%;
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.7rem; }
+
+.main-site-container .right-main-container .popular-posts-container .popular-posts-text {
+  background: #0D1921;
+  color: white;
+  font-size: 1.1rem;
+  font-family: "Roboto Slab", serif;
+  padding: 1% 0 1% 0;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 7%; }
+
+.main-site-container .right-main-container .popular-posts-container .popular-post-container .popular-post-image-container {
+  position: relative;
+  text-align: center;
+  color: white;
+  margin-bottom: 7%; }
+  .main-site-container .right-main-container .popular-posts-container .popular-post-container .popular-post-image-container .popular-post-image {
+    filter: brightness(80%); }
+  .main-site-container .right-main-container .popular-posts-container .popular-post-container .popular-post-image-container .popular-post-text {
+    position: absolute;
+    width: 100%;
+    word-wrap: break-word;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    font-family: "Roboto Slab", serif; }
+  .main-site-container .right-main-container .popular-posts-container .popular-post-container .popular-post-image-container .popular-post-info-container {
+    display: flex;
+    font-size: 0.9rem;
+    font-family: "Roboto Slab", serif;
+    position: absolute;
+    width: 100%;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: space-around; }
+
+.navbar-properties {
+  font-size: 20px; }
+
+.img-size {
+  height: 50vh;
+  margin-bottom: 1rem !important; }
+
+.temporary-img-properties {
+  width: 100% !important;
+  margin-bottom: 1rem !important; }
+
+.temporary-post-list-properties {
+  display: flex;
+  justify-content: space-between; }
+
+img {
+  max-width: 100%;
+  height: auto; }
+
+/*@import "~bootstrap/scss/bootstrap";*/
 

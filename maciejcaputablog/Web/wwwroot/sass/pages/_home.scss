@@ -103,18 +103,17 @@ body {
 }
 
 @media (max-width: 767.98px) {
-    .list-categories-properties{
-        padding-top : 0 !important;
+    .list-categories-properties {
+        padding-top: 0 !important;
     }
 
     .list-categories-properties ul {
         flex-direction: column;
         margin-top: 2vh;
 
-        li{
-            margin:1vh;;
+        li {
+            margin: 1vh;
         }
-
     }
 
     .info-bar-properties {
@@ -156,4 +155,188 @@ body {
 
 .navbar {
     padding: 0 !important;
+}
+
+.trying {
+    background-color: blue;
+    width: 100px;
+    height: 100px;
+}
+
+.main-site-container {
+    .left-main-container {
+        .last-posts-container {
+            .last-posts-text-properties {
+                font-weight: 600;
+                padding-bottom: 2%;
+                border-bottom: 1px solid $light-grey;
+            }
+
+            .last-posts-grid {
+                .single-article-container {
+                    margin-top: 3%;
+                    padding-left: 3%;
+                    padding-right: 3%;
+
+                    .single-article-conteiner-inner {
+                        border-bottom: 1px solid $grey;
+
+                        .article-header {
+                            .article-header-image-container {
+                                overflow: hidden;
+
+                                .article-header-img {
+                                    transition: transform .5s;
+
+                                    &:hover {
+                                        -ms-transform: scale3d(1.2, 1.2, 1); /* IE 9 */
+                                        -webkit-transform: scale3d(1.2, 1.2, 1); /* Safari 3-8 */
+                                        transform: scale3d(1.2, 1.2, 1);
+                                    }
+                                }
+                            }
+
+                            .article-header-text {
+                                margin: 8% 0 3% 0;
+                                font-weight: bold;
+                                font-family: $primary-menu-font;
+                                font-size: $primary-main-article-title-font-size;
+                                text-align: center;
+                                vertical-align: middle;
+                            }
+
+                            .article-info-container {
+                                display: flex;
+                                justify-content: space-around;
+                                font-family: $regular-font;
+                                margin-bottom: 6%
+                            }
+                        }
+
+                        .article-lead-container {
+                            font-size: $primary-main-article-lead-font-size;
+                            font-family: $regular-font;
+                            text-align: justify;
+                            text-justify: inter-word;
+                        }
+
+                        .article-footer-container {
+                            display: flex;
+                            justify-content: space-between;
+                            font-size: 2rem;
+                            margin-bottom: 5%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .right-main-container {
+        .about-me-container {
+            width: 100%;
+            margin-bottom: 7%;
+
+            .about-me-text {
+                background-color: $dark-blue;
+                color: white;
+                font-family: $primary-menu-font;
+                font-weight: bold;
+                font-size: 1.2rem;
+                border: 1px solid $dark-blue;
+                border-radius: 10px;
+                text-align: center;
+            }
+
+            .about-me-image-container {
+                .about-me-image-container-inner {
+                    text-align: center;
+
+                    .about-me-image {
+                        margin-top: 7%;
+                        height: 300px;
+                    }
+                }
+            }
+
+            .about-me-description {
+                padding: 7% 2% 0% 2%;
+                text-align: justify;
+                font-size: 0.9rem;
+                font-family: $primary-menu-font
+            }
+        }
+
+        .social-media-container {
+            margin-bottom: 7%;
+
+            .social-media-text {
+                text-align: center;
+                background-color: black;
+                color: white;
+                font-weight: bold;
+                font-size: 1.1rem;
+                font-family: $primary-menu-font;
+                padding: 1% 0 1% 0;
+            }
+
+            .social-media-button-group {
+                margin-top: 7%;
+                display: flex;
+                justify-content: space-around;
+                font-size: 1.7rem;
+            }
+        }
+
+        .popular-posts-container {
+            .popular-posts-text {
+                background: $black;
+                color: white;
+                font-size: 1.1rem;
+                font-family: $primary-menu-font;
+                padding: 1% 0 1% 0;
+                text-align: center;
+                font-weight: bold;
+                margin-bottom: 7%;
+            }
+
+            .popular-post-container {
+                .popular-post-image-container {
+                    position: relative;
+                    text-align: center;
+                    color: white;
+                    margin-bottom:7%;
+
+                    .popular-post-image {
+                        filter: brightness(80%);
+                    }
+
+                    .popular-post-text {
+                        position: absolute;
+                        width:100%;
+                        word-wrap:break-word;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        color: white;
+                        font-weight: bold;
+                        font-size: 1.1rem;
+                        font-family: $primary-menu-font;
+                    }
+
+                    .popular-post-info-container {
+                        display: flex;
+                        font-size: 0.9rem;
+                        font-family: $primary-menu-font;
+                        position: absolute;
+                        width: 100%;
+                        top: 80%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        justify-content: space-around;
+                    }
+                }
+            }
+        }
+    }
 }

@@ -1,10 +1,11 @@
-﻿@import url('https://fonts.googleapis.com/css?family=Fira+Sans');
-@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+﻿@import url('https://fonts.googleapis.com/css?family=Fira+Sans|Roboto|Roboto+Slab');
 
 $primary-menu-font: 'Roboto Slab', serif;
 $primary-brand-font: 'Fira Sans', sans-serif;
+$regular-font: 'Roboto', sans-serif;
 
-$primary-menu-font-size: 145%;
+$primary-menu-font-size: 1.5rem;
 $primary-brand-font-size: 300%;
+$primary-main-article-title-font-size: 1.4rem;
+$primary-main-article-lead-font-size: 0.9rem;
 $primary-brand-slogan-font-size: 110%; 
-

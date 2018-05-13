@@ -1,7 +1,7 @@
 ﻿<header>
     <nav class="navbar navbar-light fixed-top navbar-expand-md">
         <a asp-controller="Home" asp-action="Index" id="brand" class="navbar-brand">Maciej Caputa </a>
-        <button class="navbar-toggler m-3" type="button" data-toggle="collapse" data-target="#navbarToggler" 
+        <button class="navbar-toggler m-3" type="button" data-toggle="collapse" data-target="#navbarToggler"
                 aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -15,9 +15,9 @@
                             </a>
                         </div>
                         <ul class="info-social-bar float-right">
-                            <li><a href="https://www.facebook.com/zprogramowaniemwtle/" target="_blank"><i class="fa pr-3  fa-facebook-f"></i></a></li>
-                            <li><a href="https://www.linkedin.com/in/caputamaciej/" target="_blank"><i class="fa pr-3  fa-linkedin-square"></i></a></li>
-                            <li><a href="https://www.instagram.com/maciejcaputa/" target="_blank"><i class="fa pr-3  fa-instagram padding"></i></a></li>
+                            <li><a href="https://www.facebook.com/zprogramowaniemwtle/" target="_blank"><i class="fab pr-3  fa-facebook-f"></i></a></li>
+                            <li><a href="https://www.linkedin.com/in/caputamaciej/" target="_blank"><i class="fab fa-linkedin-in pr-3"></i></a></li>
+                            <li><a href="https://www.instagram.com/maciejcaputa/" target="_blank"><i class="fab pr-3  fa-instagram padding"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -34,21 +34,25 @@
                 <div class="list-categories-properties pt-3 pb-3 collapse navbar-collapse" id="navbarToggler">
                     <ul class="d-flex justify-content-around">
                         <li>
-                            <a asp-controller="Home" asp-action="Index" class="mr-2 text-dark home">
-                                <i class="fa fa-home"></i>
-                            </a>
+                            <h3>
+                                <a asp-controller="Home" asp-action="Index" class="mr-2 text-dark home">
+                                    <i class="fa fa-home"></i>
+                                </a>
+                            </h3>
                         </li>
                         <li>
-                            <a class="text-dark" asp-controller="Home" asp-action="WhyIsSoEmptyHere">Co tu tak pusto?</a>
+                            <h3><a class="text-dark" asp-controller="Home" asp-action="WhyIsSoEmptyHere">Co tu tak pusto?</a></h3>
                         </li>
                         <li>
-                            <a class="text-dark" href="https://github.com/mcaputa" target="_blank">
-                                <i class="fa fa-github"></i>
-                                <text class="text-dark p-2">Repozytorium kodu</text>
-                            </a>
+                            <h3>
+                                <a class="text-dark" href="https://github.com/mcaputa" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                    <text class="text-dark p-2">Repozytorium kodu</text>
+                                </a>
+                            </h3>
                         </li>
                         <li>
-                            <a class="text-dark" href="https://goo.gl/ttQPVi" target="_blank">Plan prac</a>
+                            <h3> <a class="text-dark" href="https://goo.gl/ttQPVi" target="_blank">Plan prac</a></h3>
                         </li>
                     </ul>
                 </div>

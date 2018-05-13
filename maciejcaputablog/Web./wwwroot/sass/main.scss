@@ -1,6 +1,7 @@
-﻿$fa-font-path: "~font-awesome/fonts";
-@import "~font-awesome/scss/font-awesome";
-@import "global/_colors.scss", "global/_fonts.scss" ;
+﻿/*$fa-font-path: "~font-awesome/fonts";*/
+/*@import "~font-awesome/scss/font-awesome";*/
+@import "global/_colors.scss", "global/_fonts.scss", "global/_reset.scss";
+@import "components/_slider.scss";
 @import "pages/_home.scss", "pages/_post.scss";
-@import "~bootstrap/scss/bootstrap";
+/*@import "~bootstrap/scss/bootstrap";*/
 
