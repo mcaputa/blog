@@ -23,7 +23,7 @@ namespace DomainServices.Services
 
             var postsViewModel = new AllPostsDomainModel()
             {
-                PostStorageModels = allPostsDomainModels
+                PostPreviewStorageModels = allPostsDomainModels
             };
             return postsViewModel;
         }

@@ -12,7 +12,7 @@
 
 <div class="row">
     <div class="col-lg-8">
-        <h1 class="mt-4">@Model.PostDomainModel.PostStorageModel.Title</h1>
+        <h1 class="mt-4 roboto-slab">@Model.PostDomainModel.PostStorageModel.Title</h1>
         <p class="lead">
             by
             MaciejCaputa
@@ -21,7 +21,7 @@
         <p>Opublikowane dnia @Model.PostDomainModel.PostStorageModel.CreatedOn</p>
         <hr>
         <!-- Post Content -->
-        @Html.Raw(Model.PostDomainModel.PostStorageModel.Description)
+        <span class="roboto">@Html.Raw(Model.PostDomainModel.PostStorageModel.Description)</span>
         <div id="disqus_thread"></div>
     </div>
 </div>

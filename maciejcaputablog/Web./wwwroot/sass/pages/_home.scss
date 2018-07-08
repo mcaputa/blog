@@ -102,46 +102,6 @@ body {
     }
 }
 
-@media (max-width: 767.98px) {
-    .list-categories-properties {
-        padding-top: 0 !important;
-    }
-
-    .list-categories-properties ul {
-        flex-direction: column;
-        margin-top: 2vh;
-
-        li {
-            margin: 1vh;
-        }
-    }
-
-    .info-bar-properties {
-        display: none;
-    }
-
-    .brand-menu-container-properties {
-        opacity: 1;
-
-        .navabar-brand-properties {
-            display: none;
-        }
-    }
-
-    #brand {
-        display: inherit;
-    }
-
-    body {
-        padding: 8vh;
-    }
-
-    .navbar {
-        background-color: $white;
-        opacity: 1;
-    }
-}
-
 .navbar > .navbar-brand {
     display: none;
 }
@@ -173,6 +133,8 @@ body {
             }
 
             .last-posts-grid {
+                margin-bottom:5vh;
+
                 .single-article-container {
                     margin-top: 3%;
                     padding-left: 3%;
@@ -305,7 +267,7 @@ body {
                     position: relative;
                     text-align: center;
                     color: white;
-                    margin-bottom:7%;
+                    margin-bottom: 7%;
 
                     .popular-post-image {
                         filter: brightness(80%);
@@ -313,8 +275,8 @@ body {
 
                     .popular-post-text {
                         position: absolute;
-                        width:100%;
-                        word-wrap:break-word;
+                        width: 100%;
+                        word-wrap: break-word;
                         top: 50%;
                         left: 50%;
                         transform: translate(-50%, -50%);
@@ -338,5 +300,117 @@ body {
                 }
             }
         }
+    }
+}
+
+.instagram-container {
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+
+    .instagram-info-container {
+        margin-bottom: 2vh;
+
+        .instagram-info-properties {
+            font-weight: 600;
+            padding-bottom: 2%;
+            border-bottom: 1px solid $light-grey;
+        }
+    }
+
+    .instagram-images-row-properties {
+        padding-right: 0px;
+
+        .instagram-images-container {
+            display: flex;
+            padding-right: 0px;
+
+            .instagram-image-container {
+                cursor: pointer;
+                overflow: hidden;
+
+                .instagram-img-properties {
+                    transition: transform .5s;
+
+                    &:hover {
+                        -ms-transform: scale3d(1.2, 1.2, 1); /* IE 9 */
+                        -webkit-transform: scale3d(1.2, 1.2, 1); /* Safari 3-8 */
+                        transform: scale3d(1.2, 1.2, 1);
+                    }
+                }
+            }
+        }
+    }
+
+    .instagram-social-media-row-properties {
+        padding-right: 0;
+
+        .instagram-social-media-container {
+            padding-right: 0;
+
+            .instagram-social-media-box {
+                display: flex;
+                background-color: $black;
+                justify-content: center;
+
+                .instagram-social-media-properties {
+                    padding-right: 2vw;
+                    margin: 1vh 0 1vh 0;
+                    font-size: 0.85rem;
+                    font-weight: bold;
+                    font-family: $primary-brand-font;
+
+                    .social-media-text-properties {
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 767.98px) {
+    .list-categories-properties {
+        padding-top: 0 !important;
+    }
+
+    .list-categories-properties ul {
+        flex-direction: column;
+        margin-top: 2vh;
+
+        li {
+            margin: 1vh;
+        }
+    }
+
+    .info-bar-properties {
+        display: none;
+    }
+
+    .brand-menu-container-properties {
+        opacity: 1;
+
+        .navabar-brand-properties {
+            display: none;
+        }
+    }
+
+    #brand {
+        display: inherit;
+    }
+
+    body {
+        padding: 8vh;
+    }
+
+    .navbar {
+        background-color: $white;
+        opacity: 1;
+    }
+
+    .instagram-images-container {
+        flex-wrap: wrap;
+    }
+
+    .social-media-text-properties {
+        display: none;
     }
 }

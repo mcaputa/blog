@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
-
-using Core.Models.StorageModels;
+using Core.Models.DomainModels;
 
 namespace Web.ViewModels
 {
     public class MainPageViewModel
     {
-        public List<PostStorageModel> PostStorageModels { get; set; }
+        public AllPostsDomainModel AllPostsDomainModel { get; set; }
     }
 }

@@ -1,6 +1,9 @@
 ﻿namespace Common.Extensions
 {
+    using System;
     using System.Text;
+
+    using Common.Consts;
 
     public static class StringExtensions
     {
@@ -200,6 +203,18 @@
             }
 
             return string.Empty;
+        }
+
+        public static string GetPostPreview(this string lead)
+        {
+            if (lead == null 
+                || lead.Length < Const.PostPreviewLength 
+                || lead.IndexOf(" ", Const.PostPreviewLength, StringComparison.Ordinal) == -1)
+            {
+                return lead;
+            }
+
+            return lead.Substring(0, lead.IndexOf(" ", Const.PostPreviewLength, StringComparison.Ordinal)) + "...";
         }
     }
 }

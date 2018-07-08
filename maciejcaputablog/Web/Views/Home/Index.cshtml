@@ -25,43 +25,43 @@
                     Ostatnie posty
                 </h3>
                 <div class="row last-posts-grid">
-                    @for (var index = 0; index < Model.PostStorageModels.Count; index++)
-                    {
-                        var post = Model.PostStorageModels[index];
-                        <article class="col-md-6 single-article-container">
-                            <div class="single-article-conteiner-inner">
-                                <header class="article-header">
-                                    <a asp-route="@RouteNames.GetPostRoute" asp-route-friendlyTitle="@post.FriendlyTitleUrl">
-                                        <div class="article-header-image-container">
-                                            <img class="article-header-img" src="https://source.unsplash.com/random/340x226/?nature,water/@post.Id" />
+                        @for (var index = 0; index < Model.AllPostsDomainModel.PostPreviewStorageModels.Count; index++)
+                        {
+                            var post = Model.AllPostsDomainModel.PostPreviewStorageModels[index];
+                            <article class="col-md-6 single-article-container">
+                                <div class="single-article-conteiner-inner">
+                                    <header class="article-header">
+                                        <a asp-route="@RouteNames.GetPostRoute" asp-route-friendlyTitle="@post.FriendlyTitleUrl">
+                                            <div class="article-header-image-container">
+                                                <img class="article-header-img" src="https://source.unsplash.com/random/340x226/?nature,water/@post.Id" />
+                                            </div>
+                                            <h2 class="article-header-text">@post.Title</h2>
+                                        </a>
+                                        <div class="article-info-container">
+                                            <div>
+                                                <i class="far fa-calendar-alt"></i> <span class="ml-1">@post.CreatedOn</span>
+                                            </div>
+                                            <div>
+                                                <i class="far fa-comment"></i>
+                                                <span>8</span>
+                                            </div>
                                         </div>
-                                        <h2 class="article-header-text">@post.Title</h2>
-                                    </a>
-                                    <div class="article-info-container">
+                                    </header>
+                                    <p class="article-lead-container">@post.Preview</p>
+                                    <footer class="article-footer-container">
                                         <div>
-                                            <i class="far fa-calendar-alt"></i> <span class="ml-1">@post.CreatedOn</span>
+                                            <i class="fab fa-facebook-square dark-blue"></i>
+                                            <i class="fab fa-twitter grey"></i>
+                                            <i class="fab fa-google-plus-g dark-blue"></i>
                                         </div>
                                         <div>
-                                            <i class="far fa-comment"></i>
-                                            <span>8</span>
+                                            <a asp-route="@RouteNames.GetPostRoute" asp-route-friendlyTitle="@post.FriendlyTitleUrl"><i class="fas fa-arrow-circle-right pr-2"></i></a>
                                         </div>
-                                    </div>
-                                </header>
-                                <p class="article-lead-container">Lorem ipsum, luroem ipsum, Lorem ipsum, Lorem ipsum, luroem ipsum, Lorem ipsumLorem ipsum, luroem ipsum, Lorem ipsumLorem ipsum, luroem ipsum, Lorem ipsumLorem ipsum, luroem ipsum</p>
-                                <footer class="article-footer-container">
-                                    <div>
-                                        <i class="fab fa-facebook-square dark-blue"></i>
-                                        <i class="fab fa-twitter grey"></i>
-                                        <i class="fab fa-google-plus-g dark-blue"></i>
-                                    </div>
-                                    <div>
-                                        <a asp-route="@RouteNames.GetPostRoute" asp-route-friendlyTitle="@post.FriendlyTitleUrl"><i class="fas fa-arrow-circle-right pr-2"></i></a>
-                                    </div>
-                                </footer>
-                            </div>
-                        </article>
-                    }
-                </div>
+                                    </footer>
+                                </div>
+                            </article>
+                        }
+                    </div>
             </div>
         </div>
         <div class="col-md-4 right-main-container">
@@ -97,28 +97,84 @@
                 </div>
                 @for (int i = 0; i < 3; i++)
                 {
-                    var post = Model.PostStorageModels[i];
-                
-                    <a asp-route="@RouteNames.GetPostRoute" asp-route-friendlyTitle="@post.FriendlyTitleUrl"><div class="popular-post-container">
-                    <div class="popular-post-image-container">
-                        <img class="popular-post-image" src="https://source.unsplash.com/random/340x150/?nature,water/@post.Id" />
-                        <div class="popular-post-text">@post.Title</div>
-                        <div class="popular-post-info-container">
-                            <div>
-                                <i class="far fa-calendar-alt"></i> <span class="ml-1">@post.CreatedOn</span>
-                            </div>
-                            <div>
-                                <i class="far fa-comment"></i>
-                                <span>8</span>
+                    var post = Model.AllPostsDomainModel.PostPreviewStorageModels[i];
+
+                    <a asp-route="@RouteNames.GetPostRoute" asp-route-friendlyTitle="@post.FriendlyTitleUrl">
+                        <div class="popular-post-container">
+                            <div class="popular-post-image-container">
+                                <img class="popular-post-image" src="https://source.unsplash.com/random/340x150/?nature,water/@post.Id" />
+                                <div class="popular-post-text">@post.Title</div>
+                                <div class="popular-post-info-container">
+                                    <div>
+                                        <i class="far fa-calendar-alt"></i> <span class="ml-1">@post.CreatedOn</span>
+                                    </div>
+                                    <div>
+                                        <i class="far fa-comment"></i>
+                                        <span>8</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
                     </a>
                 }
             </div>
         </div>
     </div>
+    <div class="row instagram-container">
+        <div class="row col-md-12">
+            <div class="col-md-8 instagram-info-container">
+                <h3 class="instagram-info-properties">
+                    Insta live
+                </h3>
+            </div>
+        </div>
+        <div class="row col-md-12 instagram-images-row-properties">
+            <div class="col-md-12 instagram-images-container">
+                @for (var index = 0; index < 5; index++)
+                {
+                    <div class="instagram-image-container">
+                        <img class="instagram-img-properties" src="https://source.unsplash.com/random/360x160/?nature,water/@index" />
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="row col-md-12 instagram-social-media-row-properties">
+            <div class="col-md-12 instagram-social-media-container">
+                <div class="instagram-social-media-box">
+                    <div class="instagram-social-media-properties">
+                        <a class="text-white" href="https://www.facebook.com/zprogramowaniemwtle/" target="_blank">
+                            <i class="fab fa-facebook-f pr-2"></i>
+                            <span class="text-white social-media-text-properties">FACEBOOK</span>
+                        </a>
+                        
+                    </div>
+                    <div class="instagram-social-media-properties">
+                        <a class="text-white" href="https://www.linkedin.com/in/caputamaciej/" target="_blank">
+                            <i class="fab fa-linkedin-in pr-2"></i>
+                            <span class="text-white social-media-text-properties">LINKEDIN</span>
+                        </a>
+                    </div>
+                    <div class="instagram-social-media-properties">
+                        <a class="text-white" href="https://www.instagram.com/maciejcaputa/" target="_blank">
+                            <i class="fab fa-instagram padding pr-2"></i>
+                            <span class="text-white social-media-text-properties">INSTAGRAM</span>
+                        </a>
+                        
+
+                    </div>
+                    <div class="instagram-social-media-properties">
+                        <a class="text-white" href="https://github.com/mcaputa" target="_blank">
+                            <i class="fab fa-github"></i>
+                            <span class="text-white social-media-text-properties">GITHUB</span>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 </div>
 
 @section JS

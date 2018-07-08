@@ -19,11 +19,11 @@ namespace Web.Controllers
 
         public IActionResult Index()
         {
-            var postDomainModel = this.postService.GetAllPosts();
+            var allPostsDomainModel = this.postService.GetAllPosts();
 
             var mainPageViewModel = new MainPageViewModel()
             {
-                PostStorageModels = postDomainModel.PostStorageModels
+                AllPostsDomainModel = allPostsDomainModel
             };
 
             return View(mainPageViewModel);

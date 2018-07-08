@@ -9,6 +9,7 @@ using Core.Models.StorageModels;
 namespace Infrastructure.Repositories
 {
     using Common.Consts;
+    using Common.Extensions;
 
     using Microsoft.EntityFrameworkCore;
 
@@ -24,20 +25,22 @@ namespace Infrastructure.Repositories
             this.context = context;
         }
 
-        public List<PostStorageModel> GetAllPosts()
+        public List<PostPreviewStorageModel> GetAllPosts()
         {
             var posts = this.postRepository.GetList().OrderByDescending(post => post.CreatedOn);
 
             var postStorageModels = posts.Select(
-                post => new PostStorageModel(
-                    post.Id, 
-                    post.Title, 
-                    post.Text, 
-                    post.CreatedOn.ToString(Const.EntityDateTimeFormat), 
-                    post.FriendlyUrlTitle,
-                    null))
+                post => new PostPreviewStorageModel()
+                            {
+                                Id = post.Id,
+                                FriendlyTitleUrl = post.FriendlyUrlTitle,
+                                Preview = post.Lead.GetPostPreview(),
+                                Title = post.Title,
+                                CreatedOn = post.CreatedOn.ToString(
+                                    Const.EntityDateTimeFormat)
+                            })
                 .ToList();
-
+ 
             return postStorageModels;
         }
 

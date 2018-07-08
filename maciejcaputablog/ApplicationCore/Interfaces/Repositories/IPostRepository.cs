@@ -5,9 +5,7 @@ namespace Core.Interfaces.Repositories
 {
     public interface IPostRepository
     {
-        List<PostStorageModel> GetAllPosts();
-
-        //PostStorageModel GetPost(int postId);
+        List<PostPreviewStorageModel> GetAllPosts();
 
         PostStorageModel GetPost(string friendlyTitle);
 
